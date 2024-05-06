@@ -38,14 +38,14 @@ $(document).ready(function() {
                             return false; // Ngăn chặn việc gửi form nếu thông tin không đầy đủ
                         }
                         $.ajax({
-                            url: 'login.php',
+                            url: 'chucnang/login.php',
                             method: 'POST',
                             data: {tk: tk, mk: mk}, 
                             success: function (response) {
                                 var responseData = JSON.parse(response);
                                 if (responseData.message === 'done') {
                                     $.ajax({
-                                        url: 'showUN.php',
+                                        url: 'chucnang/showUN.php',
                                         method: 'POST',
                                         data: {tk: tk, mk: mk},
                                         success: function(response){
@@ -114,7 +114,7 @@ $(document).ready(function() {
     
                         // Gửi dữ liệu đến register.php
                         $.ajax({
-                            url: 'register.php',
+                            url: 'chucnang/register.php',
                             method: 'POST',
                             data: {tk: tk, mk: mk, name: name},
                             success: function (response) {
