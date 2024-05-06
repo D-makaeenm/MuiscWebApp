@@ -1,4 +1,16 @@
 $(document).ready(function() {
+    function showUN(username){
+        $('#login').css('display', 'none');
+        $('#show_username').css('display', 'block');
+        document.getElementById("show_username").innerHTML = "Xin chào " + username;
+        $('#logout').css('display', 'block');
+    }
+    $('#logout').click(function() {
+        logout();
+    });
+    function logout(){
+        window.location.reload();
+    }
     $('#login').click(function() {
         login();
     });
@@ -28,10 +40,23 @@ $(document).ready(function() {
                         $.ajax({
                             url: 'login.php',
                             method: 'POST',
-                            data: {tk: tk, mk: mk},
+                            data: {tk: tk, mk: mk}, 
                             success: function (response) {
                                 var responseData = JSON.parse(response);
                                 if (responseData.message === 'done') {
+                                    $.ajax({
+                                        url: 'showUN.php',
+                                        method: 'POST',
+                                        data: {tk: tk, mk: mk},
+                                        success: function(response){
+                                            var responseData = JSON.parse(response);
+                                            if (responseData.message === 'done'){
+                                                var username = responseData.username;
+                                                username = decodeURIComponent(JSON.parse('"' + username.replace(/\"/g, '\\"') + '"'));
+                                                showUN(username);
+                                            }
+                                        }
+                                    });
                                     $.alert('Đăng nhập thành công');
                                 } else {
                                     $.alert('Đăng nhập thất bại');
