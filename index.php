@@ -11,30 +11,66 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+    <script src="https://kit.fontawesome.com/e2cb9211c0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css\index.css">
     <script src="script\css.js"></script>
     <script src="script\scriptlogin.js"></script>
+
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
             <div id="left-bar">
-                <button id="logo">
-                    <img id="logo" src="image\logo.png" alt="logo.png">
-                </button>
+                <div id="btn_logo">
+                    <button id="logo">
+                        <img id="logo" src="image\logo1.png" alt="logo.png">
+                    </button>
+                </div>
+                <div id="btn_leftbar">
+                    <i id="font_aws" class="fa-solid fa-music"></i>
+                    <a id="title_btn">Tải nhạc lên</a>
+                </div>
+                <div id="btn_leftbar">
+                    <i id="font_aws" class="fa-solid fa-folder"></i>
+                    <a id="title_btn"> Thư viện</a>
+                </div>
+                <div id="btn_leftbar">
+                    <i id="font_aws" class="fa-solid fa-sliders"></i>
+                    <a id="title_btn">Playlist của bạn</a>
+                </div>
+                <div id="btn_leftbar">
+                    <i id="font_aws" class="fa-regular fa-file-audio"></i>
+                    <a id="title_btn">Nhạc mới đăng</a>
+                </div>
+                <div id="btn_leftbar">
+                    <i id="font_aws" class="fa-solid fa-music"></i>
+                    <a id="title_btn">Chủ đề và thể loại</a>
+                </div>
+                <div id="left_bar_login">
+                    <table>
+                        <tr>
+                            <th>Đăng nhập để có thể sử dụng nhiều tính năng hơn!</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="left_bar_login_btn">Đăng nhập</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <div class="col">
                 <div id="nav-bar">
-                    <input id="search" type="text" class="form-control" placeholder="Tìm kiếm">
+                    <!-- <input id="search" type="text" class="form-control" placeholder="Tìm kiếm"> -->
                     <button id="login" class="btn">Đăng nhập</button>
                     <p id="show_username"></p>
                     <button id="logout" type="button" class="btn btn-outline-info">Đăng xuất</button>
                 </div>
                 <div id="mainpage">
-                    <div id="scroll" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
-                        data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2"
-                        tabindex="0">
+                    <div id="scroll" data-bs-spy="scroll" data-bs-target="#navbar-example2"
+                        data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
+                        class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
                         <div id="gallery" class="slideshow-container" onmouseenter="pauseSlideshow()"
                             onmouseleave="startSlideshow()">
                             <div class="mySlides">
@@ -52,31 +88,65 @@
                             <a class="next" onclick="plusSlides(1)">&#10095;</a>
                         </div>
                         <h4 id="scrollspyHeading2">Mới đăng tải</h4>
-                        <p>...</p>
+                        <div class="container text-center">
+                            <div id="row_newest" class="row g-4">
+                                <div class="col col_newest">
+                                    <div class="flex-container">
+                                        <div id="img_thmp">
+                                            <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                        </div>
+                                        <div id="value_thmp">
+                                            <p>asd</p>
+                                            <p>cxc</p>
+                                            <p>fdfa</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col col_newest">Cell 2</div>
+                                <div class="col col_newest">Cell 3</div>
+                            </div>
+                            <div id="row_newest" class="row g-4">
+                                <div class="col col_newest">Cell 4</div>
+                                <div class="col col_newest">Cell 5</div>
+                                <div class="col col_newest">Cell 6</div>
+                            </div>
+                            <div id="row_newest" class="row g-4">
+                                <div class="col col_newest">Cell 7</div>
+                                <div class="col col_newest">Cell 8</div>
+                                <div class="col col_newest">Cell 9</div>
+                            </div>
+                            <div id="row_newest" class="row g-4">
+                                <div class="col col_newest">Cell 10</div>
+                                <div class="col col_newest">Cell 11</div>
+                                <div class="col col_newest">Cell 12</div>
+                            </div>
+                            <script src="script\song_newest_click.js"></script>
+                        </div>
                         <h4 id="scrollspyHeading3">Third heading</h4>
                         <p>...</p>
                         <h4 id="scrollspyHeading4">Fourth heading</h4>
                         <p>...</p>
                         <h4 id="scrollspyHeading5">Fifth heading</h4>
                         <p>assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
                         </p>
                     </div>
                 </div>
