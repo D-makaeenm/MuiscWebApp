@@ -1,0 +1,49 @@
+<?php
+$serverName = "DUYVPRO";
+$connectionOptions = array(
+    "Database" => "MusicApp",
+    "Uid" => "sa",
+    "PWD" => "makaeenm1"
+);
+
+$conn = sqlsrv_connect($serverName, $connectionOptions);
+
+if ($conn === false) {
+    die(print_r(sqlsrv_errors(), true));
+}
+
+$sql = "SELECT paths FROM test WHERE id = 1";
+$stmt = sqlsrv_query($conn, $sql);
+
+if ($stmt === false) {
+    die(print_r(sqlsrv_errors(), true));
+}
+
+if (sqlsrv_has_rows($stmt)) {
+    $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+    // Lấy đường dẫn từ cơ sở dữ liệu
+    $audio_path = $row["paths"];
+} else {
+    echo "Không có dữ liệu";
+}
+
+sqlsrv_free_stmt($stmt);
+sqlsrv_close($conn);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phát nhạc từ SQL Server</title>
+</head>
+<body>
+    <h2>Nghe bài hát</h2>
+    <audio controls>
+        <!-- Sử dụng đường dẫn âm thanh từ cơ sở dữ liệu -->
+        <source src="<?php echo $audio_path; ?>" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ phát nhạc.
+    </audio>
+</body>
+</html>

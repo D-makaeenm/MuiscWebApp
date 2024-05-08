@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css\index.css">
     <script src="script\css.js"></script>
     <script src="script\scriptlogin.js"></script>
-
+    
 </head>
 
 <body>
@@ -67,88 +67,99 @@
                     <p id="show_username"></p>
                     <button id="logout" type="button" class="btn btn-outline-info">Đăng xuất</button>
                 </div>
-                <div id="mainpage">
-                    <div id="scroll" data-bs-spy="scroll" data-bs-target="#navbar-example2"
-                        data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
-                        class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
-                        <div id="gallery" class="slideshow-container" onmouseenter="pauseSlideshow()"
-                            onmouseleave="startSlideshow()">
-                            <div class="mySlides">
-                                <img id="img_gal" src="image\1ed445615d7119557c913c2c2cb31b2e.jpg">
-                            </div>
-                            <div class="mySlides">
-                                <img id="img_gal" src="image\8b6110aa6cddbece7565ba0168f3ea72.jpg">
-                            </div>
-
-                            <div class="mySlides">
-                                <img id="img_gal" src="image\e4111d3568b3a9d9685c2136d22404da.jpg">
-                            </div>
-
-                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                        </div>
-                        <h4 id="scrollspyHeading2">Mới đăng tải</h4>
-                        <div class="container text-center">
-                            <div id="row_newest" class="row g-4">
-                                <div class="col col_newest">
-                                    <div class="flex-container">
-                                        <div id="img_thmp">
-                                            <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
-                                        </div>
-                                        <div id="value_thmp">
-                                            <p>asd</p>
-                                            <p>cxc</p>
-                                            <p>fdfa</p>
-                                        </div>
-                                    </div>
+                <div id="mainpage-container">
+                    <div id="mainpage">
+                        <div id="scroll" data-bs-spy="scroll" data-bs-target="#navbar-example2"
+                            data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
+                            class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+                            <div id="gallery" class="slideshow-container" onmouseenter="pauseSlideshow()"
+                                onmouseleave="startSlideshow()">
+                                <div class="mySlides">
+                                    <img id="img_gal" src="image\1ed445615d7119557c913c2c2cb31b2e.jpg">
+                                </div>
+                                <div class="mySlides">
+                                    <img id="img_gal" src="image\8b6110aa6cddbece7565ba0168f3ea72.jpg">
                                 </div>
 
-                                <div class="col col_newest">Cell 2</div>
-                                <div class="col col_newest">Cell 3</div>
+                                <div class="mySlides">
+                                    <img id="img_gal" src="image\e4111d3568b3a9d9685c2136d22404da.jpg">
+                                </div>
+
+                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
                             </div>
-                            <div id="row_newest" class="row g-4">
-                                <div class="col col_newest">Cell 4</div>
-                                <div class="col col_newest">Cell 5</div>
-                                <div class="col col_newest">Cell 6</div>
+                            <h4 id="scrollspyHeading2">Mới đăng tải</h4>
+                            <div class="container text-center">
+                                <div id="row_newest" class="row g-4">
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col col_newest">Cell 2</div>
+                                    <div class="col col_newest">Cell 3</div>
+                                </div>
+                                <div id="row_newest" class="row g-4">
+                                    <div class="col col_newest">Cell 4</div>
+                                    <div class="col col_newest">Cell 5</div>
+                                    <div class="col col_newest">Cell 6</div>
+                                </div>
+                                <div id="row_newest" class="row g-4">
+                                    <div class="col col_newest">Cell 7</div>
+                                    <div class="col col_newest">Cell 8</div>
+                                    <div class="col col_newest">Cell 9</div>
+                                </div>
+                                <div id="row_newest" class="row g-4">
+                                    <div class="col col_newest">Cell 10</div>
+                                    <div class="col col_newest">Cell 11</div>
+                                    <div class="col col_newest">Cell 12</div>
+                                </div>
+                                <script src="script\song_newest_click.js"></script>
                             </div>
-                            <div id="row_newest" class="row g-4">
-                                <div class="col col_newest">Cell 7</div>
-                                <div class="col col_newest">Cell 8</div>
-                                <div class="col col_newest">Cell 9</div>
+                            <h4 id="scrollspyHeading3">Third heading</h4>
+                            <p>...</p>
+                            <h4 id="scrollspyHeading4">Fourth heading</h4>
+                            <p>...</p>
+                            <div id="last_item">
+                                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                                <p>ass</p>
                             </div>
-                            <div id="row_newest" class="row g-4">
-                                <div class="col col_newest">Cell 10</div>
-                                <div class="col col_newest">Cell 11</div>
-                                <div class="col col_newest">Cell 12</div>
-                            </div>
-                            <script src="script\song_newest_click.js"></script>
+
                         </div>
-                        <h4 id="scrollspyHeading3">Third heading</h4>
-                        <p>...</p>
-                        <h4 id="scrollspyHeading4">Fourth heading</h4>
-                        <p>...</p>
-                        <h4 id="scrollspyHeading5">Fifth heading</h4>
-                        <p>assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                            assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                        </p>
                     </div>
+                </div>
+            </div>
+            <div id="bottom_bar">
+                <div class="flex-container ctn_bottom_bar">
+                    <div id="img_thmp_bottom_bar">
+                        <img id="img_thmp_in_bottom_bar" src="image\img_thumpnail.jpg" alt="">
+                    </div>
+                    <div id="value_thmp_bottom_bar">
+                        <p id="p1">asd</p>
+                        <p id="p2">cxc</p>
+                    </div>
+                    <div id="add_playlist_bottom_bar">
+                        <i id="btn_add_playlist" class="fa-solid fa-heart"></i>
+                    </div>
+                </div>
+                <div id="audio">
+                    <audio id="audio1" controls>
+                        <source src="mp3\Hold On  Fadi Slowed Reverb.mp3">
+                        </source>
+                    </audio>
+                </div>
+                <div id="volume">
+                    <i class="fa-solid fa-volume-high"></i>
+                    <input type="range" id="slider1" min="0" max="100" value="100"></input>
+                    <script src="script\volume.js"></script>
                 </div>
             </div>
         </div>

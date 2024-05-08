@@ -19,10 +19,11 @@
     flex-direction: column; /* Căn chỉnh các phần tử con theo chiều dọc */
     height: 100vh; /* Chiều cao của .col là 100% chiều cao của viewport */
     padding: 0;
+    background-color: rgba(23, 15, 35, 0.9);
 }
 
 #nav-bar {
-    background-color: rgba(23, 15, 35, 0.9);
+    background-color: rgba(23, 15, 35);
     height: 55px;
     display: flex;
     align-items: center;
@@ -45,8 +46,12 @@
     flex: 1; /* Phần này sẽ mở rộng để chiếm phần còn lại của .col */
     background-color: rgba(23, 15, 35, 0.9); /* Màu nền cho #mainpage */
     overflow-y: auto; /* Cho phép cuộn khi nội dung vượt quá kích thước */
+    height: 100%;
 }
-
+#mainpage-container {
+    height: 100%; /* Chiều cao của container phải bằng chiều cao của cửa sổ trình duyệt trừ đi chiều cao của thanh bottom_bar */
+    overflow-y: auto; /* Cho phép cuộn nếu nội dung vượt quá kích thước */
+}
 #search {
     margin-left: 10px;
     background-color: #2f2739;
@@ -242,4 +247,79 @@ td{
 #value_thmp p {
     flex: 1; /* Phần này mở rộng để lấp đầy không gian còn lại của div cha */
     margin: 0; /* Loại bỏ margin mặc định của thẻ p */
+}
+#bottom_bar {
+    display: flex;
+    flex-direction:row;
+    position: fixed;
+    bottom: 0; /* Đặt thanh ở phía dưới cùng của màn hình */
+    left: 0; /* Đặt thanh ở lề trái của màn hình */
+    width: 100%; /* Chiều rộng tối đa */
+    height: 88px;
+    background-color: rgba(23, 15, 35);
+    color: #fff;
+}
+#last_item{
+    margin-bottom: 88px;
+}
+#img_thmp_in_bottom_bar{
+    width: 100%; /* Để ảnh lấp đầy phần tử div */
+    height: auto; /* Đảm bảo tỷ lệ khung hình bị giữ nguyên */
+    display: block;
+    border-radius: 8px;
+    transform: scale(0.8);
+}
+#img_thmp_bottom_bar{
+    display: flex; /* Sử dụng flexbox cho phần tử con */
+    flex-direction: column; /* Sắp xếp các phần tử con theo chiều dọc */
+    justify-content: center; /* Căn giữa các phần tử con theo chiều dọc */
+    max-width: 80px;
+    max-height: 80px;
+    overflow: hidden;
+    flex: 1;
+    margin: 4px;
+}
+.ctn_bottom_bar{
+    max-width: 320px;
+    align-items: stretch;
+    width: 100%;
+}
+#value_thmp_bottom_bar{
+    flex: 1; /* Phần này mở rộng để lấp đầy không gian còn lại của div cha */
+    display: flex; /* Sử dụng flexbox cho phần tử con */
+    flex-direction: column; /* Sắp xếp các phần tử con theo chiều dọc */
+    justify-content: center; /* Căn giữa các phần tử con theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+#value_thmp_bottom_bar p {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin: 0;
+    margin-right: auto;
+}
+#add_playlist_bottom_bar{
+    margin-left: auto;
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+#btn_add_playlist{
+    cursor: pointer;
+    transition: background-color 0.3s ease;;
+    color: #ce666b;
+}
+#btn_add_playlist:hover{
+    color: blanchedalmond;
+}
+#volume{
+    margin-left: auto;
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+#volume i {
+    margin-right: 3px;
+}
+#audio{
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center;
 }
