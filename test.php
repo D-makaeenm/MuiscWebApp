@@ -3,31 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volume Control</title>
+    <title>Audio Player</title>
+    <style>
+        #seekBar {
+            max-width: 300px;
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            border-radius: 5px;
+            background: linear-gradient(to right,#fff 0%, #4b4094 100%);
+            background-size: 100% 100%;
+            outline: none;
+            transition: background 0.2s;
+        }
+
+        #seekBar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        #seekBar::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <label>
-        Volume
-        <input type="range" id="slider1" min="0" max="100" value="100">
-        <span id="display1"></span>
-    </label>
-
     <audio id="audio1" controls>
         <source src="https://cdn.jsdelivr.net/gh/zenpho/tjs@master/musicForManateesLow.mp3">
     </audio>
 
+    <input type="range" id="seekBar" min="0" value="0">
+
     <script>
-        var audio1 = document.getElementById("audio1");
-        var slider1 = document.getElementById("slider1");
-        var display1 = document.getElementById("display1");
+        var audio = document.getElementById("audio1");
+        var seekBar = document.getElementById("seekBar");
 
-        slider1.addEventListener("input", sliderActions);
+        audio.addEventListener("loadedmetadata", function() {
+            seekBar.max = audio.duration;
+        });
 
-        function sliderActions() {
-            var newVolume = slider1.value;
+        seekBar.addEventListener("input", function() {
+            audio.currentTime = seekBar.value;
+        });
 
-            display1.innerText = newVolume; // range 0 to 100
-            audio1.volume = newVolume / 100; // range 0 to 1 
+        audio.addEventListener("timeupdate", function() {
+            seekBar.value = audio.currentTime;
+            updateSeekBarBackground();
+        });
+
+        function updateSeekBarBackground() {
+            var percent = (audio.currentTime / audio.duration) * 100;
+            seekBar.style.background = "linear-gradient(to right, #9dc7b8 0%, #9dc7b8 " + percent + "%, #fff " + percent + "%, #4b4094 100%)";
         }
     </script>
 </body>

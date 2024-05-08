@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css\index.css">
     <script src="script\css.js"></script>
     <script src="script\scriptlogin.js"></script>
-    
+
 </head>
 
 <body>
@@ -151,6 +151,20 @@
                     </div>
                 </div>
                 <div id="audio">
+
+                    <div id="audio_btn">
+                        <div id="prev_btn"><i class="fa-solid fa-backward"></i></div>
+                        <div id="play_btn"><i class="fa-regular fa-circle-play"></i></div>
+                        <div id="pause_btn"><i class="fa-solid fa-pause"></i></div>
+                        <div id="next_btn"><i class="fa-solid fa-forward"></i></div>
+                        <script src="script\run_audio.js"></script>
+                    </div>
+                    <div id="seekBar_audio">
+                        <p id="currentTime">0:00</p>
+                        <input type="range" id="seekBar" min="0" value="0">
+                        <p id="duration"></p>
+                    </div>
+                    <script src="script\seekbar.js"></script>
                     <audio id="audio1" controls>
                         <source src="mp3\Hold On  Fadi Slowed Reverb.mp3">
                         </source>
