@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <title>Trang Mới</title>
+    <title>DMp3 - Trang nghe nhạc siêu lậu, siêu leak</title>
+    <link rel="icon" type="image/x-icon" href="image\favicon-32x32.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -15,7 +16,8 @@
     <link rel="stylesheet" href="css\index.css">
     <script src="script\css.js"></script>
     <script src="script\scriptlogin.js"></script>
-
+    <script src="script\test.js"></script>
+    <script src="script\GUI.js"></script>
 </head>
 
 <body>
@@ -27,23 +29,23 @@
                         <img id="logo" src="image\logo1.png" alt="logo.png">
                     </button>
                 </div>
-                <div id="btn_leftbar">
+                <div id="btn_leftbar" class="post_music">
                     <i id="font_aws" class="fa-solid fa-music"></i>
                     <a id="title_btn">Tải nhạc lên</a>
                 </div>
-                <div id="btn_leftbar">
+                <div id="btn_leftbar" class="lib_music">
                     <i id="font_aws" class="fa-solid fa-folder"></i>
                     <a id="title_btn"> Thư viện</a>
                 </div>
-                <div id="btn_leftbar">
+                <div id="btn_leftbar" class="playlist_music">
                     <i id="font_aws" class="fa-solid fa-sliders"></i>
                     <a id="title_btn">Playlist của bạn</a>
                 </div>
-                <div id="btn_leftbar">
+                <div id="btn_leftbar" class="newest_music">
                     <i id="font_aws" class="fa-regular fa-file-audio"></i>
                     <a id="title_btn">Nhạc mới đăng</a>
                 </div>
-                <div id="btn_leftbar">
+                <div id="btn_leftbar" class="topic_music">
                     <i id="font_aws" class="fa-solid fa-music"></i>
                     <a id="title_btn">Chủ đề và thể loại</a>
                 </div>
@@ -59,6 +61,8 @@
                         </tr>
                     </table>
                 </div>
+
+
             </div>
             <div class="col">
                 <div id="nav-bar">
@@ -68,6 +72,7 @@
                     <button id="logout" type="button" class="btn btn-outline-info">Đăng xuất</button>
                 </div>
                 <div id="mainpage-container">
+                    <!-- main page -->
                     <div id="mainpage">
                         <div id="scroll" data-bs-spy="scroll" data-bs-target="#navbar-example2"
                             data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"
@@ -104,23 +109,144 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col_newest">Cell 2</div>
-                                    <div class="col col_newest">Cell 3</div>
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div id="row_newest" class="row g-4">
-                                    <div class="col col_newest">Cell 4</div>
-                                    <div class="col col_newest">Cell 5</div>
-                                    <div class="col col_newest">Cell 6</div>
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div id="row_newest" class="row g-4">
-                                    <div class="col col_newest">Cell 7</div>
-                                    <div class="col col_newest">Cell 8</div>
-                                    <div class="col col_newest">Cell 9</div>
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div id="row_newest" class="row g-4">
-                                    <div class="col col_newest">Cell 10</div>
-                                    <div class="col col_newest">Cell 11</div>
-                                    <div class="col col_newest">Cell 12</div>
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col_newest">
+                                        <div class="flex-container">
+                                            <div id="img_thmp">
+                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                            </div>
+                                            <div id="value_thmp">
+                                                <p>asd</p>
+                                                <p>cxc</p>
+                                                <p>fdfa</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <script src="script\song_newest_click.js"></script>
                             </div>
@@ -133,6 +259,36 @@
                                 <p>ass</p>
                             </div>
 
+                        </div>
+                    </div>
+                    <!-- khi mainpage bi an -->
+                    <div id="lib_page">
+                        <h1 id="lib_text">Thư viện của bạn</h1>
+                        <div id="text_playlist">
+                            <div id="playlist_div">
+                                <h4 id="playlist_text">Playlist <i class="fa-solid fa-music"></i></h4>
+                                <h4 id="add_playlist_btn" title="Thêm Playlist"><i class="fa-solid fa-circle-plus"></i></h4>
+                            </div>
+                        </div>
+                        <div class="playlist_containers">
+                            <div id="gallery" class="slideshow_container_playlist">
+                                <div class="mySlides_playlist">
+                                    <img id="img_gal" src="image\1ed445615d7119557c913c2c2cb31b2e.jpg">
+                                </div>
+                                <div class="mySlides_playlist">
+                                    <img id="img_gal" src="image\8b6110aa6cddbece7565ba0168f3ea72.jpg">
+                                </div>
+                                <div class="mySlides_playlist">
+                                    <img id="img_gal" src="image\e4111d3568b3a9d9685c2136d22404da.jpg">
+                                </div>
+                                <div class="mySlides_playlist">
+                                    <img id="img_gal" src="image\0cb3d9535d544ef48c47bd5886b36f15.jpg">
+                                </div>
+                                <a class="prev_playlist" onclick="plusSlidesPlaylist(-1)">&#10094;</a>
+                                <a class="next_playlist" onclick="plusSlidesPlaylist(1)">&#10095;</a>
+                            </div>
+                            <script src="script\playlist.js"></script>
+                            <script src="script\add_playlist.js"></script>
                         </div>
                     </div>
                 </div>

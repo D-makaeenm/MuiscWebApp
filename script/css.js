@@ -47,3 +47,5 @@ function startSlideshow() {
 window.onload = function() {
     showSlides(slideIndex); // Hiển thị slide khi trang được load
 };
+
+// ------------------------------------------------------ play lít

@@ -32,10 +32,10 @@ $stmt = sqlsrv_query($conn, $sql, $params);
 // Kiểm tra kết quả truy vấn
 if ($stmt === false) {
     // Đăng ký thất bại
-    $response['message'] = 'not ok';
+    $response['message'] = 'sai';
 } else {
     // Đăng ký thành công
-    $response['message'] = 'ok';
+    $response['message'] = 'dung';
 }
 
 // Trả về kết quả cho JavaScript

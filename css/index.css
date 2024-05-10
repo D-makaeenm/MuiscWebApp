@@ -50,7 +50,7 @@
 }
 #mainpage-container {
     height: 100%; /* Chiều cao của container phải bằng chiều cao của cửa sổ trình duyệt trừ đi chiều cao của thanh bottom_bar */
-    overflow-y: auto; /* Cho phép cuộn nếu nội dung vượt quá kích thước */
+    overflow-y:hidden; /* Cho phép cuộn nếu nội dung vượt quá kích thước */
 }
 #search {
     margin-left: 10px;
@@ -243,7 +243,9 @@ td{
     justify-content: center; /* Căn giữa các phần tử con theo chiều dọc */
     padding-left: 10px; /* Để có khoảng cách giữa ảnh và các phần tử p */
 }
-
+.text-center{
+    padding: 0;
+}
 #value_thmp p {
     flex: 1; /* Phần này mở rộng để lấp đầy không gian còn lại của div cha */
     margin: 0; /* Loại bỏ margin mặc định của thẻ p */
@@ -305,10 +307,10 @@ td{
 #btn_add_playlist{
     cursor: pointer;
     transition: background-color 0.3s ease;;
-    color: #ce666b;
+    color: #ffffff;
 }
 #btn_add_playlist:hover{
-    color: blanchedalmond;
+    color: rgb(227, 120, 138);
 }
 #volume{
     margin-left: auto;
@@ -383,4 +385,89 @@ td{
 }
 #pause_btn{
     display: none;
+}
+/* khu này là mục thư viện */
+#lib_page{
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 100%;
+    display: none;
+    flex: 1; /* Phần này sẽ mở rộng để chiếm phần còn lại của .col */
+    overflow-y: auto; /* Cho phép cuộn khi nội dung vượt quá kích thước */
+    height: 100%;
+}
+#lib_text{
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+#playlist_text{
+    color: #fff;
+    margin-top: 10px;
+}
+#playlist_div{
+    display: flex;
+}
+
+.playlist_containers {
+    color: #fff;
+    max-height: 900px;
+    overflow-x: hidden; /* Thay đổi từ "auto" thành "hidden" để ẩn thanh cuộn */
+    width: 100%;
+}
+
+.slideshow_container_playlist {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.slides_container {
+    display: flex;
+}
+
+.mySlides_playlist {
+    box-sizing: border-box;
+    flex: 0 0 33.33%; /* Mỗi slide chiếm 1/3 chiều rộng */
+}
+
+.mySlides_playlist img {
+    width: 100%;
+    height: auto;
+}
+
+.prev_playlist,
+.next_playlist {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 16px;
+    color: white;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.next_playlist {
+    right: 0; /* Đặt nút next ở vị trí phải */
+    border-radius: 3px 0 0 3px; /* Đổi border-radius để nút next có góc tròn ở bên trái */
+}
+#text_playlist{
+    display: flex;
+    flex-direction: row;
+}
+#add_playlist_btn{
+    color: #927d8f;
+    margin-top: 10px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#add_playlist_btn:hover{
+    color: #7c5a77;
 }

@@ -3,13 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phát nhạc từ SQL Server</title>
+    <title>Upload File</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 </head>
 <body>
-    <h2>Nghe bài hát</h2>
-    <audio controls>
-        <source src="<?php echo $audio_path; ?>" type="audio/mpeg">
-        Trình duyệt của bạn không hỗ trợ phát nhạc.
-    </audio>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput" accept=".mp3" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            $('#uploadForm').submit(function(e) {
+                e.preventDefault(); // Ngăn chặn form submit mặc định
+
+                var formData = new FormData(this);
+
+                $.confirm({
+                    title: 'Confirm',
+                    content: 'Bạn có chắc muốn upload file này?',
+                    buttons: {
+                        confirm: function () {
+                            $.ajax({
+                                url: 'test.php', // Đường dẫn tới script xử lý upload file trên máy chủ
+                                type: 'POST',
+                                data: formData,
+                                processData: false, // Prevent jQuery from automatically converting data to a query string
+                                contentType: false, // Prevent jQuery from setting Content-Type
+                                success: function(response) {
+                                    $.alert('File đã được upload thành công!');
+                                    console.log(response);
+                                },
+                                error: function(xhr, status, error) {
+                                    $.alert('Đã xảy ra lỗi trong quá trình upload file.');
+                                    console.error(xhr.responseText);
+                                }
+                            });
+                        },
+                        cancel: function () {
+                            // Hủy bỏ hành động
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    checklogin = 0;
     function showUN(username){
         $('#login').css('display', 'none');
         $('#show_username').css('display', 'block');
@@ -12,6 +13,9 @@ $(document).ready(function() {
         window.location.reload();
     }
     $('#login').click(function() {
+        login();
+    });
+    $('#left_bar_login_btn').click(function(){
         login();
     });
     function login(){
@@ -58,6 +62,7 @@ $(document).ready(function() {
                                         }
                                     });
                                     $.alert('Đăng nhập thành công');
+                                    checklogin = 1;
                                 } else {
                                     $.alert('Đăng nhập thất bại');
                                 }
@@ -102,6 +107,7 @@ $(document).ready(function() {
                     text: 'Tạo',
                     btnClass: 'btn-green',
                     action: function () {
+                        //$.alert("Mơ à bạn ?");
                         var tk = this.$content.find('.tk').val();
                         var mk = this.$content.find('.mk').val();
                         var name = this.$content.find('.name').val();
@@ -118,10 +124,11 @@ $(document).ready(function() {
                             method: 'POST',
                             data: {tk: tk, mk: mk, name: name},
                             success: function (response) {
-                                if (response.message === 'ok') {
+                                var responseData = JSON.parse(response);
+                                if (responseData.message === 'dung') {
                                     $.alert('Đăng ký thành công');
-                                } else if (response.message === 'not ok') {
-                                    $.alert('Đăng ký thất bại');
+                                } else if (responseData.message === 'sai') {
+                                    $.alert('Đã tồn tại tài khoản xin đặt username khác');
                                 }
                             },
                             error: function () {
