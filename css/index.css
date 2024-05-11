@@ -219,13 +219,13 @@ td{
 #left_bar_login_btn:hover{
     background-color: #5f576c;
 }
-#img_thmp{
+.img_thmp{
     max-width: 80px;
     max-height: 80px;
     overflow: hidden;
     flex: 1;
 }
-#img_thmp_in{
+.img_thmp_in{
     width: 100%; /* Để ảnh lấp đầy phần tử div */
     height: auto; /* Đảm bảo tỷ lệ khung hình bị giữ nguyên */
     display: block;
@@ -236,19 +236,22 @@ td{
     align-items: stretch; /* Đảm bảo các phần tử con mở rộng để phù hợp với chiều cao của div cha */
 }
 
-#value_thmp {
+.value_thmp {
     flex: 1; /* Phần này mở rộng để lấp đầy không gian còn lại của div cha */
     display: flex; /* Sử dụng flexbox cho phần tử con */
     flex-direction: column; /* Sắp xếp các phần tử con theo chiều dọc */
     justify-content: center; /* Căn giữa các phần tử con theo chiều dọc */
     padding-left: 10px; /* Để có khoảng cách giữa ảnh và các phần tử p */
+    width: 100%;
+    height: 100%;
 }
 .text-center{
     padding: 0;
 }
-#value_thmp p {
+.value_thmp p {
     flex: 1; /* Phần này mở rộng để lấp đầy không gian còn lại của div cha */
     margin: 0; /* Loại bỏ margin mặc định của thẻ p */
+    width: 100%;
 }
 #bottom_bar {
     display: flex;

@@ -14,7 +14,7 @@ if (!$conn) {
 }
 
 // Câu truy vấn SQL để lấy danh sách bài hát mới nhất, giới hạn 12 bài hát
-$sql = "SELECT TOP 12 ms_name, author, user_post, path_to_image FROM baihat ORDER BY time_post DESC";
+$sql = "SELECT TOP 12 id, ms_name, author, user_post, path_to_image FROM baihat ORDER BY time_post DESC";
 $stmt = sqlsrv_query($conn, $sql);
 
 if ($stmt === false) {
@@ -28,6 +28,7 @@ if ($stmt === false) {
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
         // Thêm thông tin của mỗi bài hát vào mảng
         $song_info = array(
+            'id' => $row['id'], // Thêm ID của bài hát
             'music_name' => $row['ms_name'],
             'author' => $row['author'],
             'user_post' => $row['user_post'],
@@ -37,7 +38,7 @@ if ($stmt === false) {
 
         // Thêm thông tin bài hát vào mảng chứa các bài hát mới nhất
         array_push($newest_songs, $song_info);
-    }
+    }   
 
     // Trả về dữ liệu dưới dạng JSON
     echo json_encode(array('success' => true, 'newest_songs' => $newest_songs));
