@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>DMp3 - Trang nghe nhạc siêu lậu, siêu leak</title>
     <link rel="icon" type="image/x-icon" href="image\favicon-32x32.png">
@@ -18,52 +17,13 @@
     <script src="script\scriptlogin.js"></script>
     <script src="script\test.js"></script>
     <script src="script\GUI.js"></script>
+    <script src="script\song_newest_show.js"></script>
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div id="left-bar">
-                <div id="btn_logo">
-                    <button id="logo">
-                        <img id="logo" src="image\logo1.png" alt="logo.png">
-                    </button>
-                </div>
-                <div id="btn_leftbar" class="post_music">
-                    <i id="font_aws" class="fa-solid fa-music"></i>
-                    <a id="title_btn">Tải nhạc lên</a>
-                </div>
-                <div id="btn_leftbar" class="lib_music">
-                    <i id="font_aws" class="fa-solid fa-folder"></i>
-                    <a id="title_btn"> Thư viện</a>
-                </div>
-                <div id="btn_leftbar" class="playlist_music">
-                    <i id="font_aws" class="fa-solid fa-sliders"></i>
-                    <a id="title_btn">Playlist của bạn</a>
-                </div>
-                <div id="btn_leftbar" class="newest_music">
-                    <i id="font_aws" class="fa-regular fa-file-audio"></i>
-                    <a id="title_btn">Nhạc mới đăng</a>
-                </div>
-                <div id="btn_leftbar" class="topic_music">
-                    <i id="font_aws" class="fa-solid fa-music"></i>
-                    <a id="title_btn">Chủ đề và thể loại</a>
-                </div>
-                <div id="left_bar_login">
-                    <table>
-                        <tr>
-                            <th>Đăng nhập để có thể sử dụng nhiều tính năng hơn!</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button id="left_bar_login_btn">Đăng nhập</button>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
-
-            </div>
+            <?php include 'form\leftbar.php'; ?>
             <div class="col">
                 <div id="nav-bar">
                     <!-- <input id="search" type="text" class="form-control" placeholder="Tìm kiếm"> -->
@@ -99,7 +59,7 @@
                                     <div class="col col_newest">
                                         <div class="flex-container">
                                             <div id="img_thmp">
-                                                <img id="img_thmp_in" src="image\img_thumpnail.jpg" alt="">
+                                                <img id="img_thmp_in" src="image_path\180x180.jpg" alt="">
                                             </div>
                                             <div id="value_thmp">
                                                 <p>asd</p>
@@ -250,12 +210,12 @@
                                 </div>
                                 <script src="script\song_newest_click.js"></script>
                             </div>
-                            <h4 id="scrollspyHeading3">Third heading</h4>
+                            <h4 id="scrollspyHeading3">Nhạc chill</h4>
                             <p>...</p>
-                            <h4 id="scrollspyHeading4">Fourth heading</h4>
+                            <h4 id="scrollspyHeading4">Remix cháy bỏng</h4>
                             <p>...</p>
                             <div id="last_item">
-                                <h4 id="scrollspyHeading5">Fifth heading</h4>
+                                <h4 id="scrollspyHeading5">EDM</h4>
                                 <p>ass</p>
                             </div>
 
@@ -267,28 +227,120 @@
                         <div id="text_playlist">
                             <div id="playlist_div">
                                 <h4 id="playlist_text">Playlist <i class="fa-solid fa-music"></i></h4>
-                                <h4 id="add_playlist_btn" title="Thêm Playlist"><i class="fa-solid fa-circle-plus"></i></h4>
+
+                                <h4 id="add_playlist_btn" title="Thêm Playlist"><i class="fa-solid fa-circle-plus"></i>
+                                </h4>
                             </div>
                         </div>
                         <div class="playlist_containers">
-                            <div id="gallery" class="slideshow_container_playlist">
+                            <div id="gallery_playlist" class="slideshow_container_playlist">
                                 <div class="mySlides_playlist">
                                     <img id="img_gal" src="image\1ed445615d7119557c913c2c2cb31b2e.jpg">
+                                    <p>Name playlist1</p>
                                 </div>
                                 <div class="mySlides_playlist">
                                     <img id="img_gal" src="image\8b6110aa6cddbece7565ba0168f3ea72.jpg">
+                                    <p>Name playlist2</p>
                                 </div>
                                 <div class="mySlides_playlist">
                                     <img id="img_gal" src="image\e4111d3568b3a9d9685c2136d22404da.jpg">
+                                    <p>Name playlist3</p>
                                 </div>
                                 <div class="mySlides_playlist">
                                     <img id="img_gal" src="image\0cb3d9535d544ef48c47bd5886b36f15.jpg">
+                                    <p>Name playlist4</p>
                                 </div>
                                 <a class="prev_playlist" onclick="plusSlidesPlaylist(-1)">&#10094;</a>
                                 <a class="next_playlist" onclick="plusSlidesPlaylist(1)">&#10095;</a>
                             </div>
                             <script src="script\playlist.js"></script>
                             <script src="script\add_playlist.js"></script>
+                        </div>
+                        <div id="music_liked_upload_container">
+                            <h6 id="music_liked_btn">Bài hát đã thích</h6>
+                            <h6 id="music_posted_btn">Bài hát đã tải lên</h6>
+                        </div>
+                        <div id="liked_music_container">
+                            <div id="liked_music">
+                                <div id="im_thmp_playlist">
+                                    <img id="img_thmp_in_playlist" src="image\img_thumpnail.jpg" alt="">
+                                </div>
+                                <div id="value_thmp_playlist">
+                                    <p id="p1">asd</p>
+                                    <p id="p2">cxc</p>
+                                </div>
+                                <div id="unlike_btn">
+                                    <i id="notdone_unlike" title="Bỏ thích" class="fa-solid fa-circle-xmark"></i>
+                                    <i id="done_unlike" class="fa-solid fa-circle-check"></i>
+                                </div>
+                            </div>
+                            <div id="liked_music">
+                                <div id="im_thmp_playlist">
+                                    <img id="img_thmp_in_playlist" src="image\img_thumpnail.jpg" alt="">
+                                </div>
+                                <div id="value_thmp_playlist">
+                                    <p id="p1">asd</p>
+                                    <p id="p2">cxc</p>
+                                </div>
+                                <div id="unlike_btn">
+                                    <i id="notdone_unlike" title="Bỏ thích" class="fa-solid fa-circle-xmark"></i>
+                                    <i id="done_unlike" class="fa-solid fa-circle-check"></i>
+                                </div>
+                            </div>
+                            <div id="liked_music">
+                                <div id="im_thmp_playlist">
+                                    <img id="img_thmp_in_playlist" src="image\img_thumpnail.jpg" alt="">
+                                </div>
+                                <div id="value_thmp_playlist">
+                                    <p id="p1">asd</p>
+                                    <p id="p2">cxc</p>
+                                </div>
+                                <div id="unlike_btn">
+                                    <i id="notdone_unlike" title="Bỏ thích" class="fa-solid fa-circle-xmark"></i>
+                                    <i id="done_unlike" class="fa-solid fa-circle-check"></i>
+                                </div>
+                            </div>
+                            <div id="liked_music">
+                                <div id="im_thmp_playlist">
+                                    <img id="img_thmp_in_playlist" src="image\img_thumpnail.jpg" alt="">
+                                </div>
+                                <div id="value_thmp_playlist">
+                                    <p id="p1">asd</p>
+                                    <p id="p2">cxc</p>
+                                </div>
+                                <div id="unlike_btn">
+                                    <i id="notdone_unlike" title="Bỏ thích" class="fa-solid fa-circle-xmark"></i>
+                                    <i id="done_unlike" class="fa-solid fa-circle-check"></i>
+                                </div>
+                            </div>
+                            <div id="liked_music">
+                                <div id="im_thmp_playlist">
+                                    <img id="img_thmp_in_playlist" src="image\img_thumpnail.jpg" alt="">
+                                </div>
+                                <div id="value_thmp_playlist">
+                                    <p id="p1">asd</p>
+                                    <p id="p2">cxc</p>
+                                </div>
+                                <div id="unlike_btn">
+                                    <i id="notdone_unlike" title="Bỏ thích" class="fa-solid fa-circle-xmark"></i>
+                                    <i id="done_unlike" class="fa-solid fa-circle-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="posted_music_container">
+                            <div id="posted_music">
+                                <div id="im_thmp_playlist">
+                                    <img id="img_thmp_in_playlist" src="image\img_thumpnail.jpg" alt="">
+                                </div>
+                                <div id="value_thmp_playlist">
+                                    <p id="p1">asd</p>
+                                    <p id="p2">cxc</p>
+                                </div>
+                                <div id="delete_btn">
+                                    <i id="notdone_delete" title="Xóa" class="fa-solid fa-circle-xmark"></i>
+                                    <i id="done_delete" class="fa-solid fa-circle-check"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -307,7 +359,6 @@
                     </div>
                 </div>
                 <div id="audio">
-
                     <div id="audio_btn">
                         <div id="prev_btn"><i class="fa-solid fa-backward"></i></div>
                         <div id="play_btn"><i class="fa-regular fa-circle-play"></i></div>

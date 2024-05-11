@@ -1,10 +1,12 @@
 $(document).ready(function() {
     checklogin = 0;
+    usr = {};
     function showUN(username){
         $('#login').css('display', 'none');
         $('#show_username').css('display', 'block');
         document.getElementById("show_username").innerHTML = "Xin chào " + username;
         $('#logout').css('display', 'block');
+        usr = username;
     }
     $('#logout').click(function() {
         logout();
@@ -21,7 +23,7 @@ $(document).ready(function() {
     function login(){
         $.confirm({
             title: 'Đăng nhập',
-            content:    `
+            content: `
             <form action="" class="form_name">
                 <div class="form-group">
                     <label>Tài khoản</label>
@@ -62,9 +64,12 @@ $(document).ready(function() {
                                         }
                                     });
                                     $.alert('Đăng nhập thành công');
+                                    var element = document.getElementById("left_bar_login");
+                                    element.style.display = "none";
                                     checklogin = 1;
                                 } else {
                                     $.alert('Đăng nhập thất bại');
+                                    checklogin = 0;
                                 }
                             },
                             

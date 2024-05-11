@@ -50,7 +50,7 @@
 }
 #mainpage-container {
     height: 100%; /* Chiều cao của container phải bằng chiều cao của cửa sổ trình duyệt trừ đi chiều cao của thanh bottom_bar */
-    overflow-y:hidden; /* Cho phép cuộn nếu nội dung vượt quá kích thước */
+    overflow-y:auto /* Cho phép cuộn nếu nội dung vượt quá kích thước */
 }
 #search {
     margin-left: 10px;
@@ -393,8 +393,8 @@ td{
     height: 100%;
     display: none;
     flex: 1; /* Phần này sẽ mở rộng để chiếm phần còn lại của .col */
-    overflow-y: auto; /* Cho phép cuộn khi nội dung vượt quá kích thước */
     height: 100%;
+    overflow: hidden;
 }
 #lib_text{
     color: #fff;
@@ -470,4 +470,106 @@ td{
 }
 #add_playlist_btn:hover{
     color: #7c5a77;
+}
+#music_liked_upload_container{
+    display: flex;
+    flex-direction: row;
+}
+#music_liked_btn{
+    color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+    border: solid #fff 1px;
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+#music_liked_btn:hover{
+    background-color: #7688a5;
+}
+#music_posted_btn{
+    color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+    border: solid #fff 1px;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+#music_posted_btn:hover{
+    background-color: #7688a5;
+}
+#liked_music_container{
+    overflow: auto;
+    max-height: 264px; /* Thêm một chiều cao tối đa để thanh cuộn xuất hiện khi cần */
+}
+#liked_music{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#done_unlike{
+    display: none;
+}
+#img_thmp_in_playlist{
+    width: 100%; /* Để ảnh lấp đầy phần tử div */
+    height: auto; /* Đảm bảo tỷ lệ khung hình bị giữ nguyên */
+    display: block;
+    border-radius: 8px;
+    transform: scale(0.8);
+}
+#value_thmp_playlist{
+    display: flex;
+    flex: 1;
+    flex-direction: column; /* Sắp xếp các phần tử con theo chiều dọc */
+    justify-content: center; /* Căn giữa các phần tử con theo chiều dọc */
+    padding-left: 10px; /* Để có khoảng cách giữa ảnh và các phần tử p */
+}
+#value_thmp_playlist p {
+    flex: 1;
+    margin: 0;
+    color: #fff;
+}
+#unlike_btn{
+    padding-right: 10px;
+}
+#im_thmp_playlist{
+    display: flex; /* Sử dụng flexbox cho phần tử con */
+    flex-direction: column; /* Sắp xếp các phần tử con theo chiều dọc */
+    justify-content: center; /* Căn giữa các phần tử con theo chiều dọc */
+    max-width: 80px;
+    max-height: 80px;
+    overflow: hidden;
+    flex: 1;
+    margin: 4px;
+}
+#notdone_unlike{
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+#posted_music_container{
+    overflow: auto;
+    max-height: 264px; /* Thêm một chiều cao tối đa để thanh cuộn xuất hiện khi cần */
+    display: none;
+}
+#posted_music{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#delete_btn{
+    padding-right: 10px;
+}
+#notdone_delete{
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+#done_delete{
+    display: none;
 }

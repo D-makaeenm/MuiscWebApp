@@ -1,28 +1,30 @@
 let slideIndexPlaylist = 0;
-const totalSlides = document.querySelectorAll('.mySlides_playlist').length;
+let totalSlides = document.querySelectorAll('.mySlides_playlist').length;
 
 function plusSlidesPlaylist(n) {
+    totalSlides = document.querySelectorAll('.mySlides_playlist').length; // Cập nhật lại số lượng slides khi có thay đổi
     showSlidesPlaylist(slideIndexPlaylist += n);
 }
 
 function showSlidesPlaylist(n) {
     const slides = document.querySelectorAll('.mySlides_playlist');
 
-    // Xử lý trường hợp quá giới hạn
-    if (n >= totalSlides) { 
-        slideIndexPlaylist = 0; 
-    } else if (n < 0) { 
-        slideIndexPlaylist = totalSlides - 1; 
-    }
-
     // Đặt vị trí hiện tại của slide
-    let currentIndex = (slideIndexPlaylist + totalSlides) % totalSlides;
+    let currentIndex = (n + totalSlides) % totalSlides;
     slides[currentIndex].style.order = 2;
 
     // Đặt vị trí của slide trước đó và slide tiếp theo
-    let prevIndex = (slideIndexPlaylist - 1 + totalSlides) % totalSlides;
-    let nextIndex = (slideIndexPlaylist + 1) % totalSlides;
+    let prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    let nextIndex = (currentIndex + 1) % totalSlides;
 
-    slides[prevIndex].style.order = 1;
-    slides[nextIndex].style.order = 3;
+    // Thiết lập order cho slide trước đó và slide tiếp theo
+    for (let i = 0; i < slides.length; i++) {
+        if (i === prevIndex) {
+            slides[i].style.order = 1;
+        } else if (i === nextIndex) {
+            slides[i].style.order = 3;
+        } else {
+            slides[i].style.order = 0; // Reset order của các slide khác
+        }
+    }
 }
