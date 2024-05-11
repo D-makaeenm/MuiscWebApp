@@ -18,11 +18,21 @@ document.addEventListener("DOMContentLoaded", function() {
         updateSeekBarBackground();
         currentTimeText.textContent = formatTime(audio.currentTime);
     });
+
+    audio.addEventListener("ended", function() {
+        // Thực hiện các lệnh CSS mong muốn khi âm thanh kết thúc
+        var element = document.getElementById("play_btn");
+        element.style.display = "block";
+        var element1 = document.getElementById("pause_btn");
+        element1.style.display = "none";
+    });
+
     function formatTime(time) {
         var minutes = Math.floor(time / 60);
         var seconds = Math.floor(time % 60);
         return pad(minutes) + ":" + pad(seconds);
     }
+
     function pad(number) {
         return (number < 10 ? "0" : "") + number;
     }
