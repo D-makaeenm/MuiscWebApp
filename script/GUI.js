@@ -1,9 +1,11 @@
 $(document).ready(function() {
     $('.lib_music').click(function(){
-        var element = document.getElementById("mainpage");
-        element.style.display = "none";
+        var mainpage = document.getElementById("mainpage");
+        mainpage.style.display = "none";
         var lib_page = document.getElementById("lib_page");
         lib_page.style.display = "block";
+        var newest_page = document.getElementById("newest_page");
+        newest_page.style.display = "none";
     });
     $('#music_posted_btn').click(function(){
         var element = document.getElementById("liked_music_container");
@@ -18,10 +20,12 @@ $(document).ready(function() {
         element1.style.display = "none";
     });
     $('#btn_logo').click(function(){
-        var element = document.getElementById("mainpage");
-        element.style.display = "block";
-        var element1 = document.getElementById("lib_page");
-        element1.style.display = "none";
+        var mainpage = document.getElementById("mainpage");
+        mainpage.style.display = "block";
+        var lib_page = document.getElementById("lib_page");
+        lib_page.style.display = "none";
+        var newest_page = document.getElementById("newest_page");
+        newest_page.style.display = "none";
     });
     $('.post_music').click(function(){
         if(checklogin == 0){
@@ -30,4 +34,12 @@ $(document).ready(function() {
             upload();
         }
     });
+    $('.newest_music').click(function(){
+        var mainpage = document.getElementById("mainpage");
+        mainpage.style.display = "none";
+        var lib_page = document.getElementById("lib_page");
+        lib_page.style.display = "none";
+        var newest_page = document.getElementById("newest_page");
+        newest_page.style.display = "block";
+    })
 });

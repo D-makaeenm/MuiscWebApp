@@ -42,7 +42,7 @@
                 <img id="img_thmp_in_playlist" src="image\img_thumpnail.jpg" alt="">
             </div>
             <div id="value_thmp_playlist">
-                <p id="p1">asd</p>
+                <p id="p1">asdccc</p>
                 <p id="p2">cxc</p>
             </div>
             <div id="unlike_btn">
@@ -110,6 +110,58 @@
             </div>
             <div id="value_thmp_playlist">
                 <p id="p1">asd</p>
+                <p id="p2">cxc</p>
+            </div>
+            <div id="delete_btn">
+                <i id="notdone_delete" title="Xóa" class="fa-solid fa-circle-xmark"></i>
+                <i id="done_delete" class="fa-solid fa-circle-check"></i>
+            </div>
+        </div>
+        <div id="posted_music">
+            <div id="im_thmp_playlist">
+                <img id="img_thmp_in_playlist" src="image\img_thumpnail.jpg" alt="">
+            </div>
+            <div id="value_thmp_playlist">
+                <p id="p1">asd</p>
+                <p id="p2">cxc</p>
+            </div>
+            <div id="delete_btn">
+                <i id="notdone_delete" title="Xóa" class="fa-solid fa-circle-xmark"></i>
+                <i id="done_delete" class="fa-solid fa-circle-check"></i>
+            </div>
+        </div>
+        <div id="posted_music">
+            <div id="im_thmp_playlist">
+                <img id="img_thmp_in_playlist" src="image\img_thumpnail.jpg" alt="">
+            </div>
+            <div id="value_thmp_playlist">
+                <p id="p1">asd</p>
+                <p id="p2">cxc</p>
+            </div>
+            <div id="delete_btn">
+                <i id="notdone_delete" title="Xóa" class="fa-solid fa-circle-xmark"></i>
+                <i id="done_delete" class="fa-solid fa-circle-check"></i>
+            </div>
+        </div>
+        <div id="posted_music">
+            <div id="im_thmp_playlist">
+                <img id="img_thmp_in_playlist" src="image\img_thumpnail.jpg" alt="">
+            </div>
+            <div id="value_thmp_playlist">
+                <p id="p1">asd</p>
+                <p id="p2">cxc</p>
+            </div>
+            <div id="delete_btn">
+                <i id="notdone_delete" title="Xóa" class="fa-solid fa-circle-xmark"></i>
+                <i id="done_delete" class="fa-solid fa-circle-check"></i>
+            </div>
+        </div>
+        <div id="posted_music">
+            <div id="im_thmp_playlist">
+                <img id="img_thmp_in_playlist" src="image\img_thumpnail.jpg" alt="">
+            </div>
+            <div id="value_thmp_playlist">
+                <p id="p1">asdssss</p>
                 <p id="p2">cxc</p>
             </div>
             <div id="delete_btn">

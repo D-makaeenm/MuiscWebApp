@@ -45,6 +45,10 @@ $(document).ready(function() {
 function bindClickEvent() {
     $('.col_newest').click(function() {
         var songId = $(this).data('song-id'); // Lấy ID của bài hát từ data-song-id
+        var element = document.getElementById("play_btn");
+        var element1 = document.getElementById("pause_btn");
+        element.style.display = "block";
+        element1.style.display = "none";
         idsong = songId;
         // Gửi yêu cầu AJAX để lấy thông tin của bài hát dựa trên ID
         $.ajax({
@@ -60,6 +64,7 @@ function bindClickEvent() {
                     $('#tacgia').text(response.song_info.author);
                     $('#audio1 source').attr('src', response.song_info.music_path);
                     $('#audio1')[0].load(); // Load lại audio sau khi thay đổi source
+                    
                 } else {
                     console.error(response.message);
                 }

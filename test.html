@@ -1,54 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload File</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dropdown Selection</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 </head>
 <body>
-    <form id="uploadForm" enctype="multipart/form-data">
-        <input type="file" name="file" id="fileInput" accept=".mp3" required>
-        <button type="submit">Upload</button>
-    </form>
 
-    <script>
-        $(document).ready(function() {
-            $('#uploadForm').submit(function(e) {
-                e.preventDefault(); // Ngăn chặn form submit mặc định
+<select id="dropdown">
+    <option value=""> </option> <!-- Tùy chọn mặc định với một ký tự trống -->
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <option value="option3">Option 3</option>
+</select>
 
-                var formData = new FormData(this);
+<button id="sendButton">Gửi</button>
+<button id="resetButton">Chọn lại</button>
 
-                $.confirm({
-                    title: 'Confirm',
-                    content: 'Bạn có chắc muốn upload file này?',
-                    buttons: {
-                        confirm: function () {
-                            $.ajax({
-                                url: 'test.php', // Đường dẫn tới script xử lý upload file trên máy chủ
-                                type: 'POST',
-                                data: formData,
-                                processData: false, // Prevent jQuery from automatically converting data to a query string
-                                contentType: false, // Prevent jQuery from setting Content-Type
-                                success: function(response) {
-                                    $.alert('File đã được upload thành công!');
-                                    console.log(response);
-                                },
-                                error: function(xhr, status, error) {
-                                    $.alert('Đã xảy ra lỗi trong quá trình upload file.');
-                                    console.error(xhr.responseText);
-                                }
-                            });
-                        },
-                        cancel: function () {
-                            // Hủy bỏ hành động
-                        }
-                    }
-                });
-            });
-        });
-    </script>
+<div id="selections"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  var temporaryArray = [];
+
+  $('#dropdown').on('change', function() {
+  var selectedOption = $(this).val();
+  if (selectedOption !== "") {
+    if (temporaryArray.indexOf(selectedOption) === -1) {
+      temporaryArray.push(selectedOption);
+    }
+  }
+  displaySelections();
+});
+
+  $('#sendButton').on('click', function() {
+    // Gửi mảng temporaryArray đi ở đây
+    // Ví dụ: $.ajax() hoặc bất kỳ phương thức gửi dữ liệu nào bạn muốn sử dụng
+    console.log(temporaryArray);
+  });
+
+  $('#resetButton').on('click', function() {
+    temporaryArray = [];
+    displaySelections();
+  });
+
+  function displaySelections() {
+    $('#selections').empty();
+    if (temporaryArray.length > 0) {
+      var selectionsHTML = '<p>Đã chọn: ' + temporaryArray.join(', ') + '</p>';
+      $('#selections').html(selectionsHTML);
+    }
+  }
+});
+
+</script>
+
 </body>
 </html>
