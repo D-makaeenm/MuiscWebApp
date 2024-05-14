@@ -745,3 +745,43 @@ td{
     max-width: 200px;
     width: 100%;
 }
+#playlist_page{
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 100%;
+    display: none;
+    flex: 1; /* Phần này sẽ mở rộng để chiếm phần còn lại của .col */
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(23, 15, 35, 0.9);
+}
+.row_playlist_page{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    color: #fff;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+#playlist_page_item{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    max-width: 330px;
+    max-height: 354px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 9px;
+    margin-right: 9px;
+}
+#playlist_page_item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+#playlist_page_text{
+    color: #fff;
+}

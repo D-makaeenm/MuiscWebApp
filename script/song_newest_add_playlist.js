@@ -5,6 +5,9 @@ if (!window.playlistInitialized) {
     // Bên trong khối này là đoạn mã JavaScript cần thực thi chỉ một lần
 
     document.addEventListener("DOMContentLoaded", function() {
+        // Mảng để lưu ID của các checkbox được chọn
+        var selectedSongIds = [];
+
         // Gửi yêu cầu AJAX để lấy thông tin nhạc từ PHP
         $.ajax({
             url: 'chucnang/get_newest_song_20.php',
@@ -30,6 +33,7 @@ if (!window.playlistInitialized) {
                         var checkboxInput = document.createElement("input");
                         checkboxInput.type = "checkbox";
                         checkboxInput.className = "pick_checkbox";
+                        checkboxInput.id = "checkbox_" + song.id; // Đặt ID của checkbox
                         checkboxDiv.appendChild(checkboxInput);
                         musicContentDiv.appendChild(checkboxDiv);
 
@@ -43,7 +47,7 @@ if (!window.playlistInitialized) {
                         // Thêm các thông tin khác
                         var timePostDiv = document.createElement("div");
                         timePostDiv.id = "music_newest_time_post_content";
-                        timePostDiv.textContent = song.time_post; // Chưa biết cột nào chứa thông tin về ngày đăng
+                        timePostDiv.textContent = song.time_post;
                         musicContentDiv.appendChild(timePostDiv);
 
                         var userPostDiv = document.createElement("div");
@@ -85,8 +89,27 @@ if (!window.playlistInitialized) {
         });
         
 
+        // Sử dụng sự kiện change để xác định khi nào checkbox được thay đổi
         $(document).on("change", ".pick_checkbox", function() {
-            var anyChecked = $(".pick_checkbox:checked").length > 0;
+            // Lấy ID của checkbox
+            var checkboxId = $(this).attr("id");
+            
+            // Kiểm tra xem checkbox có được chọn hay không
+            if ($(this).is(":checked")) {
+                // Nếu được chọn, thêm ID vào mảng
+                selectedSongIds.push(checkboxId);
+            } else {
+                // Nếu không được chọn, loại bỏ ID khỏi mảng (nếu có)
+                var index = selectedSongIds.indexOf(checkboxId);
+                if (index !== -1) {
+                    selectedSongIds.splice(index, 1);
+                }
+            }
+
+            // Kiểm tra xem có checkbox nào được chọn không
+            var anyChecked = selectedSongIds.length > 0;
+
+            // Hiển thị hoặc ẩn nút playlist tùy thuộc vào việc có checkbox được chọn hay không
             var element = document.getElementById('btn_add_playlist_newest_page');
             var element1 = document.getElementById('newest_text');
             if (anyChecked) {
@@ -98,7 +121,15 @@ if (!window.playlistInitialized) {
             }
         });
 
+
         $(document).on("click", "#btn_add_playlist_newest_page", function() {
+            // Kiểm tra xem có bài hát nào được chọn không
+            if (selectedSongIds.length === 0) {
+                alert("Vui lòng chọn ít nhất một bài hát để thêm vào playlist.");
+                console.log(selectedSongIds);
+                return;
+            }
+
             var selectedPlaylist = [];
             $.confirm({
                 title: 'Chọn Playlist cần thêm!',
@@ -116,15 +147,19 @@ if (!window.playlistInitialized) {
                         text: 'Lưu',
                         btnClass: 'btn-blue',
                         action: function() {
-                            console.log(selectedPlaylist);
+                            // Lấy giá trị của playlist được chọn
+                            var selectedPlaylist = $('#dropdown').val();
+                            
+                            // Thêm các bài hát đã chọn vào playlist
+                            // Gọi hàm thêm vào playlist với selectedSongIds và selectedPlaylist
+                            addSongsToPlaylist(selectedSongIds, selectedPlaylist);
                         }
                     },
                     rePick: {
                         text: 'Chọn lại',
                         btnClass: 'btn-yellow',
                         action: function() {
-                            selectedPlaylist = [];
-                            $('#playlist_selected').html(""); // Xóa hiển thị
+                            selectedSongIds = [];
                             return false;
                         }
                     },
@@ -133,15 +168,17 @@ if (!window.playlistInitialized) {
                     },
                 },
                 onContentReady: function() {
-                    $('#dropdown').on('change', function() {
-                        var selectedValue = $(this).val();
-                        if (selectedValue !== "" && !selectedPlaylist.includes(selectedValue)) {
-                            selectedPlaylist.push(selectedValue);
-                            $('#playlist_selected').html("Playlist đã chọn: " + selectedPlaylist.join(", "));
-                        }
-                    });
+                    // Hiển thị các bài hát đã chọn
+                    var selectedSongs = selectedSongIds.join(", ");
+                    $('#playlist_selected').html("Bài hát đã chọn: " + selectedSongs);
                 }
             });
         });
     });
+}
+
+// Hàm thêm các bài hát vào playlist
+function addSongsToPlaylist(songIds, playlistId) {
+    console.log(songIds);
+    console.log(playlistId);
 }
