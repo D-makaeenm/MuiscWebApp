@@ -32,11 +32,7 @@ $(document).ready(function() {
         playlist_page.style.display = "none";
     });
     $('.post_music').click(function(){
-        if(checklogin == 0){
-            $.alert("Bạn cần đăng nhập để dùng chức năng này !");
-        }else{
-            upload();
-        }
+        upload();
     });
     $('.newest_music').click(function(){
         var mainpage = document.getElementById("mainpage");

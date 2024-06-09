@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>DMp3 - Trang nghe nhạc siêu lậu, siêu leak</title>
     <link rel="icon" type="image/x-icon" href="image\favicon-32x32.png">
@@ -58,10 +57,10 @@
                         </div>
                     </div>
                     <!-- khi playlist_page bi an -->
-                    <?php include 'form\newestpage.php'; ?>
+                    <!-- <?php include 'form\newestpage.php'; ?> -->
                 </div>
             </div>
-            <?php include 'form\bottombar.php'; ?>
+            <!-- <?php include 'form\bottombar.php'; ?> -->
         </div>
     </div>
 </body>

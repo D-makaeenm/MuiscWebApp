@@ -1,0 +1,75 @@
+#nav-bar {
+    background-color: rgba(23, 15, 35);
+    height: 55px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+#login{
+    margin-left: auto;
+    background-color: #9355a6;
+    font-size: 15px;
+    border-radius: 18px;
+    color: #fff;
+    border: none;
+    margin-right: 10px;
+    width: 90px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#login:hover{
+    background-color: #3f2248;
+}
+#logout{
+    margin: 0;
+    margin-left: 10px;
+    background-color: #9355a6;
+    font-size: 15px;
+    border-radius: 18px;
+    color: #fff;
+    border: none;
+    margin-right: 10px;
+    width:max-content;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#logout:hover{
+    background-color: #7a408b;
+}
+#search{
+    margin-left: 20px;
+    border-radius: 18px;
+    height: 28px;
+    border: none;
+    max-width: 400px;
+    width: 100%;
+    caret-color: pink;
+    text-indent: 20px;
+}
+#register{
+    background-color: #9355a6;
+    font-size: 15px;
+    border-radius: 18px;
+    color: #fff;
+    border: none;
+    margin-right: 10px;
+    width: 90px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#register:hover{
+    background-color: #3f2248;
+}
+#show_username{
+    margin-left: auto;
+    color: #fff;
+}

@@ -1,0 +1,33 @@
+.container{
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100%;
+    height: 100%;
+}
+.row{
+    display: flex;
+    max-height: 100vh;
+}
+.col{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#mainpage-container{
+    height: 100%;
+    overflow-y:auto;
+    max-height: 100vh;
+    display: flex;
+    background-color: rgba(23, 15, 35);
+}
+#mainpage-container::-webkit-scrollbar{
+    width: 5px;
+    background-color: #453a55;
+}
+#mainpage-container::-webkit-scrollbar-thumb{
+    background: rgba(23, 15, 35);
+    border-radius: 10px;
+}
+#mainpage-container::-webkit-scrollbar-thumb:hover{
+    background: rgb(119, 112, 130);
+}
