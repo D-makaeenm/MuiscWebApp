@@ -34,6 +34,7 @@ const LoginForm = () => {
         .then(data => {
             if(data.message === '1'){
                 localStorage.setItem('username', data.username); // Lưu tên người dùng vào localStorage
+                localStorage.setItem('userId', data.userId);
                 alert("Đăng nhập thành công!");
                 navigate('/');
             }

@@ -7,6 +7,7 @@ const Upload = () => {
     const [songFile, setSongFile] = useState(null);
     const [message, setMessage] = useState('');
     const [imagePreview, setImagePreview] = useState('');
+    const storedUserId = localStorage.getItem('userId');
 
     const handleSongImageChange = (event) => {
         const file = event.target.files[0];
@@ -39,14 +40,34 @@ const Upload = () => {
             return;
         }
 
-        
+        const formData = new FormData();
+        formData.append('songName', songName);
+        formData.append('songImage', songImage);
+        formData.append('songFile', songFile);
+        formData.append('userId', storedUserId);
 
-        // Sau khi xử lý, reset trạng thái và hiển thị thông báo thành công
+        fetch('http://localhost/WebMusic/chucnang/upload.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success === '1') {
+                setMessage('Bài hát đã được đăng thành công!');
+            } else {
+                setMessage(`Có lỗi xảy ra: ${data.message}`);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            setMessage('Có lỗi xảy ra khi kết nối với máy chủ.');
+        });
+
+        // Sau khi xử lý, reset trạng thái
         setSongName('');
         setSongImage(null);
         setSongFile(null);
         setImagePreview('');
-        setMessage('Bài hát đã được đăng thành công!');
     };
 
     return (

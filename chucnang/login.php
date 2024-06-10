@@ -44,11 +44,13 @@ if (isset($data['username']) && isset($data['password'])) {
         $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
         if ($row) {
             $loginResult = $row['LoginResult'];
+            $userId = $row['UserID'];
             if ($loginResult == 1) {
                 $token = bin2hex(random_bytes(16));
                 $_SESSION['username'] = $username; // Lưu tên người dùng vào session
                 $response['message'] = '1';
                 $response['username'] = $username;
+                $response['userId'] = $userId;
             } elseif ($loginResult == 2) {
                 $response['message'] = '2';
             } elseif ($loginResult == 0) {

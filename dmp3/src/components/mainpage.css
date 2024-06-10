@@ -19,6 +19,8 @@
     max-height: 100vh;
     display: flex;
     background-color: rgba(23, 15, 35);
+    max-width: 1286px;
+    
 }
 #mainpage-container::-webkit-scrollbar{
     width: 5px;

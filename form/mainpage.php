@@ -3,7 +3,7 @@
         data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
         <div id="gallery" class="slideshow-container" onmouseenter="pauseSlideshow()" onmouseleave="startSlideshow()">
             <div class="mySlides">
-                <img id="img_gal" src="image\1ed445615d7119557c913c2c2cb31b2e.jpg">
+                <img id="   " src="image\1ed445615d7119557c913c2c2cb31b2e.jpg">
             </div>
             <div class="mySlides">
                 <img id="img_gal" src="image\8b6110aa6cddbece7565ba0168f3ea72.jpg">

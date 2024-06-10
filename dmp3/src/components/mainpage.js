@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 import './mainpage.css';
 import LeftBar from './leftbar/leftbar';
 import Navbar from './navbar/navbar';
 
 function MainPage() {
+  useEffect(() => {
+    // Thực hiện chuyển hướng từ / đến /homepage
+    return () => <Navigate to="/homepage" replace />;
+  }, []);
   return (
     <HelmetProvider>
       <Helmet>
