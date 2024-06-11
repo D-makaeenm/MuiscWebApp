@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Slide } from 'react-slideshow-image';
+import { SongContext } from '../songcontext/songcontext';
 import 'react-slideshow-image/dist/styles.css';
 import './homepage.css';
 
@@ -10,6 +11,8 @@ import image4 from './slideshow/image/e0e5e9a36cf8d9d3c92957c339ce533b.jpg';
 import image5 from './slideshow/image/e4111d3568b3a9d9685c2136d22404da.jpg';
 
 const Homepage = () => {
+    const { setCurrentSong } = useContext(SongContext);
+    const [songs, setSongs] = useState([]);
     const images = [
         image1,
         image2,
@@ -17,6 +20,17 @@ const Homepage = () => {
         image4,
         image5
     ];
+
+    useEffect(() => {
+        fetch('http://localhost/WebMusic/chucnang/get_top9_lastest.php')
+            .then(response => response.json())
+            .then(data => setSongs(data))
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
+
+    const handleSongClick = (song) => {
+        setCurrentSong(song);
+    };
 
     return (
         <div id="homepage">
@@ -33,19 +47,28 @@ const Homepage = () => {
             <div id="khac">
                 <h1>Mới đăng tải</h1>
                 <div id="newest_homepage">
-                {Array.from({ length: 9 }).map((_, index) => (
-                    <div className="grid-item" key={index}>
-                        <img src="https://i.imgur.com/suXZGBZ.jpg" alt="Thumbnail" className="item-image" />
-                        <div className="item-content">
-                            <p>Tên bài hát {index + 1}</p>
-                            <p>Ngày đăng</p>
-                            <p>Tên Ca sĩ</p>
+                    {songs.map((song, index) => (
+                        <div className="grid-item" key={index} onClick={() => handleSongClick(song)}>
+                            <img src={song.ImagePath} alt="Thumbnail" className="item-image" />
+                            <div className="item-content">
+                                <p>Tên bài hát: {song.TenBaiHat}</p>
+                                <p>Ngày đăng: {song.DatePosted}</p>
+                                <p>Ca sĩ: {song.CaSi || 'Unknown Artist'}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
                 </div>
                 <div>
-                    asdasdadsa
+                    <h1>asdasdasdasd</h1>
+                </div>
+                <div>
+                    <h1>asdasdasdasd</h1>
+                </div>
+                <div>
+                    <h1>asdasdasdasd</h1>
+                </div>
+                <div>
+                    <h1>asdasdasdasd</h1>
                 </div>
             </div>
         </div>

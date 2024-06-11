@@ -77,6 +77,8 @@
     align-items: center;
     cursor: pointer;
     transition: ease 0.3s;
+    max-width: 393px;
+    max-height: 126px;
 }
 .grid-item:hover{
     background-color: #322448;
@@ -96,4 +98,10 @@
 
 .item-content p {
     margin: 5px 0;
+    max-width: 263px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
 }

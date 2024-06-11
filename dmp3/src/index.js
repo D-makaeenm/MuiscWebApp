@@ -8,6 +8,7 @@ import Signupform from './components/navbar/singupform/signup';
 import LoginForm from './components/navbar/loginform/login';
 import Upload from './components/upload/upload';
 import Homepage from "./components/homePage/homepage";
+import Library from "./components/library/library";
 import App from './App'
 import {
   createBrowserRouter,
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "library",
-        element: <h1>lib</h1>,
+        element: <Library/>,
       },{
         path: "playlist",
         element: <h1>playlist</h1>,
