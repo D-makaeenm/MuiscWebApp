@@ -9,14 +9,14 @@
     flex: 1;
     color: #fff;
     width: 100%;
-    max-width: 100%; /* Giới hạn chiều rộng tối đa của khac bằng 100% của homepage */
-    padding-left: 20px; /* Thêm khoảng cách bên trong */
-    box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến tổng chiều rộng */
+    max-width: 100%;
+    padding-left: 20px;
+    box-sizing: border-box;
 }
 #slide {
-    width: 100%; /* Đảm bảo slideshow chiếm hết chiều rộng của container */
-    max-width: 1200px; /* Đặt một giới hạn cho chiều rộng của slideshow */
-    margin: 0 auto; /* Căn giữa slideshow trong container */
+    width: 100%; 
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .each-slide-effect {

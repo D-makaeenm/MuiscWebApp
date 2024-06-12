@@ -52,6 +52,10 @@
     caret-color: pink;
     text-indent: 20px;
 }
+#search-container{
+    max-width: 400px;
+    width: 100%;
+}
 #register{
     background-color: #9355a6;
     font-size: 15px;

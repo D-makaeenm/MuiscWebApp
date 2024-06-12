@@ -86,6 +86,36 @@ const BottomBar = () => {
         setIsLooping(!isLooping);
     };
 
+    const handleLikeClick = async () => {
+        if (!currentSong) return;
+        try {
+            const userId = localStorage.getItem('userId');
+            const response = await fetch('http://localhost/WebMusic/chucnang/like_song.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    BaiHatID: currentSong.BaiHatID
+                })
+            });
+            if (response.ok) {
+                const data = await response.json();
+                if (data.message === 'The song is already liked by this user.') {
+                    alert('Bài hát đã được thích');
+                } else {
+                    console.log('Song liked successfully:', data);
+                    alert('Like thành công!');
+                }
+            } else {
+                console.error('Failed to like the song');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
     return (
         <div id="bottom_bar">
             <div id="song_infor">
@@ -97,7 +127,7 @@ const BottomBar = () => {
                             <p>{currentSong.DatePosted}</p>
                             <p>{currentSong.CaSi || 'Unknown Artist'}</p>
                         </div>
-                        <button id="like" className="tooltip">
+                        <button id="like" className="tooltip" onClick={handleLikeClick}>
                             <i className="fa-solid fa-heart"></i>
                             <span className="tooltiptext">Thích</span>
                         </button>

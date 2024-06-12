@@ -9,6 +9,7 @@ import LoginForm from './components/navbar/loginform/login';
 import Upload from './components/upload/upload';
 import Homepage from "./components/homePage/homepage";
 import Library from "./components/library/library";
+import Lastest from "./components/lastest/lastest";
 import App from './App'
 import {
   createBrowserRouter,
@@ -35,13 +36,16 @@ const router = createBrowserRouter([
       {
         path: "library",
         element: <Library/>,
-      },{
+      },
+      {
         path: "playlist",
         element: <h1>playlist</h1>,
-      },{
+      },
+      {
         path: "song_newest",
-        element: <h1>song_newest</h1>,
-      },{
+        element: <Lastest />,
+      },
+      {
         path: "topic",
         element: <h1>topic</h1>,
       },
