@@ -105,3 +105,28 @@
     text-align: left;
     text-overflow: ellipsis;
 }
+#homepage_playlist{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+#homepage_playlist_item{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0,0);
+    align-items: center;
+    border-radius: 8px;
+    border: solid 0.2px;
+    cursor: pointer;
+}
+#homepage_playlist_item img{
+    width: 290px;
+    height: 290px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+#homepage_playlist_item p{
+    color: #fff;
+    margin-top: 3px;
+    margin-bottom: 2px;
+}

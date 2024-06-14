@@ -14,11 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['songFile']) && isset
         // Lưu thông tin về bài hát vào cơ sở dữ liệu
         $music_name = $_POST['songName'];
         $userId = $_POST['userId'];
+        $chuDeId = $_POST['chuDeId'];
         // Khi tạo URL cho tên file, sử dụng rawurlencode()
         $music_path = 'http://' . $_SERVER['HTTP_HOST'] . '/WebMusic/mp3/' . rawurlencode(basename($_FILES['songFile']['name']));
         $image_path = 'http://' . $_SERVER['HTTP_HOST'] . '/WebMusic/image_path/' . rawurlencode(basename($_FILES['songImage']['name']));
 
-        // Thực hiện kết nối tới cơ sở dữ liệu SQL Server
         $serverName = "DUYVPRO";
         $connectionOptions = array(
             "Database" => "WebMusic",
@@ -27,23 +27,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['songFile']) && isset
         );
         $conn = sqlsrv_connect($serverName, $connectionOptions);
 
-        // Kiểm tra kết nối
         if ($conn === false) {
             echo json_encode(array('success' => '0', 'message' => 'Connection failed: ' . print_r(sqlsrv_errors(), true)));
             exit();
         }
 
-        // Chuẩn bị câu lệnh SQL
-        $sql = "{call InsertBaiHat(?,?,?,?)}";
-        $params = array($userId, $music_name, $music_path, $image_path);
+        $sql = "{call InsertBaiHat(?,?,?,?,?)}";
+        $params = array($userId, $music_name, $music_path, $image_path, $chuDeId);
         $stmt = sqlsrv_query($conn, $sql, $params);
 
-        // Kiểm tra và thực thi câu lệnh
         if ($stmt === false) {
             $response['success'] = '0';
             $response['message'] = 'Có lỗi xảy ra khi xử lý yêu cầu: ' . print_r(sqlsrv_errors(), true);
         } else {
-            // Kiểm tra kết quả trả về từ stored procedure
             $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
             if ($row['returnResult'] == 1) {
                 $response['success'] = '1';
@@ -54,10 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['songFile']) && isset
             }
             sqlsrv_free_stmt($stmt);
         }
-
         sqlsrv_close($conn);
 
-        // Trả về kết quả cho JavaScript
         echo json_encode($response);
     } else {
         echo json_encode(array('success' => '0', 'message' => 'File upload failed.'));

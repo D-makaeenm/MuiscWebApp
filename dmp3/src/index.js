@@ -14,6 +14,9 @@ import Playlist from "./components/playlist/playlist";
 import AddPlaylist from "./components/playlist/addplaylist/addplaylist";
 import PlaylistDetail from "./components/playlist/playlist_route/playlist_route";
 import AddSongtoPlaylist from "./components/playlist/add_song_to_playlist/addsong";
+import Chude from "./components/topic/chude";
+import Addtopic from "./components/topic/add_topic/add_topic";
+import ChudeDetail from "./components/topic/chudeDetail/chudeDetail";
 import App from './App'
 import {
   createBrowserRouter,
@@ -55,7 +58,7 @@ const router = createBrowserRouter([
       },
       {
         path: "topic",
-        element: <h1>topic</h1>,
+        element: <Chude />,
       },
       {
         path: "playlist/:playlistId",
@@ -64,7 +67,15 @@ const router = createBrowserRouter([
       {
         path: "playlist/add_music",
         element: <AddSongtoPlaylist />,
-      }
+      },
+      {
+        path: "chude/:chudeId",
+        element: <ChudeDetail />,
+      },
+      {
+        path: "/home/topic/add_chude",
+        element: <Addtopic />,
+      },
     ],
   },
   {
@@ -74,10 +85,6 @@ const router = createBrowserRouter([
   {
     path: "signup",
     element: <Signupform />,
-  },
-  {
-    path: "yasuo/yamero",
-    element: <h1>Yasuo</h1>,
   },
   {
     path: "test",

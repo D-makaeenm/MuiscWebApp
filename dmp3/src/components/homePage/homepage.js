@@ -11,8 +11,9 @@ import image4 from './slideshow/image/e0e5e9a36cf8d9d3c92957c339ce533b.jpg';
 import image5 from './slideshow/image/e4111d3568b3a9d9685c2136d22404da.jpg';
 
 const Homepage = () => {
-    const { setCurrentSong } = useContext(SongContext);
+    const { setCurrentSong, playPlaylist } = useContext(SongContext);
     const [songs, setSongs] = useState([]);
+    const [playlists, setPlaylists] = useState([]);
     const images = [
         image1,
         image2,
@@ -26,10 +27,23 @@ const Homepage = () => {
             .then(response => response.json())
             .then(data => setSongs(data))
             .catch(error => console.error('Error fetching data:', error));
+
+        fetch('http://localhost/WebMusic/chucnang/gettop4playlist.php')
+            .then(response => response.json())
+            .then(data => setPlaylists(data))
+            .catch(error => console.error('Error fetching data:', error));
     }, []);
 
     const handleSongClick = (song) => {
         setCurrentSong(song);
+    };
+
+    const handlePlaylistClick = (playlist) => {
+        // Call an API to get the songs in the playlist and then play it
+        fetch(`http://localhost/WebMusic/chucnang/getsongplaylist_homepage.php?playlistId=${playlist.PlaylistID}`)
+            .then(response => response.json())
+            .then(songs => playPlaylist(songs))
+            .catch(error => console.error('Error fetching songs in playlist:', error));
     };
 
     return (
@@ -59,16 +73,24 @@ const Homepage = () => {
                     ))}
                 </div>
                 <div>
-                    <h1>asdasdasdasd</h1>
+                    <h1>Top 4 Playlist nổi bật</h1>
+                    <div id="homepage_playlist">
+                        {playlists.map((playlist, index) => (
+                            <div id="homepage_playlist_item" key={index} onClick={() => handlePlaylistClick(playlist)}>
+                                <img 
+                                    src={playlist.ImagePath}
+                                    alt={playlist.TenPlaylist}
+                                />
+                                <p>{playlist.TenPlaylist}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <div>
-                    <h1>asdasdasdasd</h1>
-                </div>
-                <div>
-                    <h1>asdasdasdasd</h1>
-                </div>
-                <div>
-                    <h1>asdasdasdasd</h1>
+                    <h1>Top 4 Chủ đề nổi bật</h1>
+                    <div id="homepage_chude">
+                        {/* Add code here for "Top 4 Chủ đề nổi bật" */}
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,45 @@
+#add_topic{
+    padding: 20px;
+    color: #fff;
+}
+.topic_form_group {
+    margin-bottom: 20px;
+}
+
+#add_topic label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#add_topic input {
+    width: 100%;
+    padding: 10px;
+}
+
+#add_topic button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#add_topic button:hover {
+    background-color: #555;
+}
+#preview_image_playlist{
+    margin-top: 10px;
+}
+#preview_image_playlist img{
+    width: 300px;
+    height: 300px;
+}
+#input_image{
+    cursor: pointer;
+    transition: ease 0.3s;
+}
+#input_image:hover{
+    background-color: rgb(37, 25, 54);
+}

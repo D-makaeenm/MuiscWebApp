@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './upload.css';
 
 const Upload = () => {
@@ -7,12 +7,32 @@ const Upload = () => {
     const [songFile, setSongFile] = useState(null);
     const [message, setMessage] = useState('');
     const [imagePreview, setImagePreview] = useState('');
+    const [chuDeList, setChuDeList] = useState([]); // State to hold list of topics
+    const [selectedChuDe, setSelectedChuDe] = useState(''); // State to hold selected topic
     const storedUserId = localStorage.getItem('userId');
+
+    useEffect(() => {
+        // Fetch list of topics from the server
+        fetch('http://localhost/WebMusic/chucnang/get_chude.php', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success === '1') {
+                setChuDeList(data.topics || []); // Assume topics are returned in the data.topics array
+            } else {
+                console.error('Failed to fetch topics:', data.message);
+            }
+        })
+        .catch(error => console.error('Error fetching topics:', error));
+    }, []);
 
     const handleSongImageChange = (event) => {
         const file = event.target.files[0];
         setSongImage(file);
-        // Tạo URL cho xem trước ảnh
         const imageURL = URL.createObjectURL(file);
         setImagePreview(imageURL);
     };
@@ -20,7 +40,6 @@ const Upload = () => {
     const handleSongFileChange = (event) => {
         const file = event.target.files[0];
         setSongFile(file);
-        // Tách phần mở rộng của tệp nhạc
         const fileName = file.name.split('.').slice(0, -1).join('.');
         setSongName(fileName);
     };
@@ -28,15 +47,18 @@ const Upload = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Kiểm tra xem tên bài hát đã được nhập hay chưa
         if (songName.trim() === '') {
             setMessage('Vui lòng nhập tên bài hát');
             return;
         }
 
-        // Kiểm tra xem tệp hình ảnh và tệp bài hát đã được chọn hay chưa
         if (!songImage || !songFile) {
             setMessage('Vui lòng chọn ảnh và bài hát');
+            return;
+        }
+
+        if (!selectedChuDe) {
+            setMessage('Vui lòng chọn chủ đề');
             return;
         }
 
@@ -45,6 +67,7 @@ const Upload = () => {
         formData.append('songImage', songImage);
         formData.append('songFile', songFile);
         formData.append('userId', storedUserId);
+        formData.append('chuDeId', selectedChuDe); // Append selected topic ID
 
         fetch('http://localhost/WebMusic/chucnang/upload.php', {
             method: 'POST',
@@ -63,11 +86,11 @@ const Upload = () => {
             setMessage('Có lỗi xảy ra khi kết nối với máy chủ.');
         });
 
-        // Sau khi xử lý, reset trạng thái
         setSongName('');
         setSongImage(null);
         setSongFile(null);
         setImagePreview('');
+        setSelectedChuDe(''); // Reset selected topic
     };
 
     return (
@@ -96,7 +119,7 @@ const Upload = () => {
                     </div>
                     <div className="form-column">
                         <input 
-                            id = "pick_image"
+                            id="pick_image"
                             type="file" 
                             accept="image/*" 
                             onChange={handleSongImageChange} 
@@ -109,11 +132,30 @@ const Upload = () => {
                     </div>
                     <div className="form-column">
                         <input 
-                            id = "pick_audio"
+                            id="pick_audio"
                             type="file" 
                             accept="audio/*" 
                             onChange={handleSongFileChange} 
                         />
+                    </div>
+                </div>
+                <div className="form-row">
+                    <div className="form-column1">
+                        <label>Chọn chủ đề</label>
+                    </div>
+                    <div className="form-column">
+                        <select
+                            id="select_chude"
+                            value={selectedChuDe}
+                            onChange={(event) => setSelectedChuDe(event.target.value)}
+                        >
+                            <option value="">Chọn chủ đề</option>
+                            {chuDeList.map(chude => (
+                                <option key={chude.ChuDeID} value={chude.ChuDeID}>
+                                    {chude.TenChuDe}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                 </div>
                 <div className="form-row" id="div_button">

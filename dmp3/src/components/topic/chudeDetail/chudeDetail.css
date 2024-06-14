@@ -1,0 +1,47 @@
+#all_songs{
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    width: 100%;
+}
+#item_song_in_chude{
+    display: flex;
+    flex-direction: row;
+}
+#chude_detail_page{
+    width: 100%;
+    padding: 20px;
+}
+#chude_item_music {
+    max-height: 80px;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+#chude_item_music:hover {
+    background-color: #372650;
+}
+
+#chude_item_music img {
+    height: 70px;
+    width: 70px;
+    border-radius: 8px;
+}
+
+.chude_item_content {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.chude_item_content p {
+    flex: 1;
+    margin: 0;
+}

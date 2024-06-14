@@ -1,11 +1,10 @@
-// bottombar.js
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { SongContext } from '../songcontext/songcontext';
 import './bottombar.css';
 import { useNavigate } from 'react-router-dom';
 
 const BottomBar = () => {
-    const { currentSong, playNextSong } = useContext(SongContext);
+    const { currentSong, playNextSong, playPrevSong } = useContext(SongContext);
     const audioRef = useRef(null);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -164,11 +163,11 @@ const BottomBar = () => {
             <div id="progess_song">
             <div id="audio_btn">
                     <div id="shuffle_btn"><i className="fa-solid fa-shuffle"></i></div>
-                    <div id="prev_btn"><i className="fa-solid fa-backward"></i></div>
+                    <div id="prev_btn" onClick={playPrevSong}><i className="fa-solid fa-backward"></i></div>
                     <div id="play_btn" onClick={isPlaying ? handlePause : handlePlay}>
                         <i className={isPlaying ? "fa-solid fa-pause" : "fa-regular fa-circle-play"}></i>
                     </div>
-                    <div id="next_btn"><i className="fa-solid fa-forward"></i></div>
+                    <div id="next_btn" onClick={playNextSong}><i className="fa-solid fa-forward"></i></div>
                     <div 
                         id="repeat_btn" 
                         onClick={toggleLoop} 

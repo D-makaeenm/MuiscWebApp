@@ -1,4 +1,3 @@
-// songcontext.js
 import React, { createContext, useState, useEffect } from 'react';
 
 export const SongContext = createContext();
@@ -7,6 +6,7 @@ export const SongProvider = ({ children }) => {
     const [currentSong, setCurrentSong] = useState(null);
     const [currentPlaylist, setCurrentPlaylist] = useState([]);
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
+    const [playlistType, setPlaylistType] = useState('playlist'); // 'playlist' or 'chude'
 
     useEffect(() => {
         if (currentPlaylist.length > 0) {
@@ -21,9 +21,17 @@ export const SongProvider = ({ children }) => {
         }
     };
 
-    const playPlaylist = (playlist) => {
+    const playPrevSong = () => {
+        if (currentPlaylist.length > 0) {
+            const prevIndex = (currentSongIndex - 1 + currentPlaylist.length) % currentPlaylist.length;
+            setCurrentSongIndex(prevIndex);
+        }
+    };
+
+    const playPlaylist = (playlist, type = 'playlist') => {
         setCurrentPlaylist(playlist);
         setCurrentSongIndex(0);
+        setPlaylistType(type);
     };
 
     return (
@@ -35,7 +43,10 @@ export const SongProvider = ({ children }) => {
             currentSongIndex, 
             setCurrentSongIndex, 
             playNextSong,
-            playPlaylist
+            playPrevSong,
+            playPlaylist,
+            playlistType,
+            setPlaylistType
         }}>
             {children}
         </SongContext.Provider>
