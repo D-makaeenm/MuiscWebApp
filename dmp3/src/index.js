@@ -10,6 +10,10 @@ import Upload from './components/upload/upload';
 import Homepage from "./components/homePage/homepage";
 import Library from "./components/library/library";
 import Lastest from "./components/lastest/lastest";
+import Playlist from "./components/playlist/playlist";
+import AddPlaylist from "./components/playlist/addplaylist/addplaylist";
+import PlaylistDetail from "./components/playlist/playlist_route/playlist_route";
+import AddSongtoPlaylist from "./components/playlist/add_song_to_playlist/addsong";
 import App from './App'
 import {
   createBrowserRouter,
@@ -39,7 +43,11 @@ const router = createBrowserRouter([
       },
       {
         path: "playlist",
-        element: <h1>playlist</h1>,
+        element: <Playlist />,
+      },
+      {
+        path: "playlist/addplaylist",
+        element: <AddPlaylist  />,
       },
       {
         path: "song_newest",
@@ -49,6 +57,14 @@ const router = createBrowserRouter([
         path: "topic",
         element: <h1>topic</h1>,
       },
+      {
+        path: "playlist/:playlistId",
+        element: <PlaylistDetail />,
+      },
+      {
+        path: "playlist/add_music",
+        element: <AddSongtoPlaylist />,
+      }
     ],
   },
   {

@@ -1,0 +1,46 @@
+#add_playlist_page {
+    color: #fff;
+    padding: 20px;
+}
+
+.playlist_form_group {
+    margin-bottom: 20px;
+}
+
+#add_playlist_page label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#add_playlist_page input {
+    width: 100%;
+    padding: 10px;
+}
+
+#add_playlist_page button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#add_playlist_page button:hover {
+    background-color: #555;
+}
+#preview_image_playlist{
+    margin-top: 10px;
+}
+#preview_image_playlist img{
+    width: 300px;
+    height: 300px;
+}
+#input_image{
+    cursor: pointer;
+    transition: ease 0.3s;
+}
+#input_image:hover{
+    background-color: rgb(37, 25, 54);
+}

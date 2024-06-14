@@ -14,38 +14,27 @@ $connectionOptions = [
     "PWD" => $pass
 ];
 
-// Kết nối đến cơ sở dữ liệu
 $conn = sqlsrv_connect($serverName, $connectionOptions);
 
-// Kiểm tra kết nối
 if ($conn === false) {
     die(print_r(sqlsrv_errors(), true));
 }
 
-// Lấy query từ request
-$query = isset($_GET['query']) ? $_GET['query'] : '';
+$input = json_decode(file_get_contents('php://input'), true);
+$userid = $input['userId'];
 
-// Chuẩn bị câu lệnh SQL để gọi stored procedure
-$sql = "{CALL SearchSongs(?)}";
-
-// Chuẩn bị và thực thi truy vấn
-$params = [$query];
+$sql = "{CALL get_playlists(?)}";
+$params = array(
+    array($userid, SQLSRV_PARAM_IN)
+);
 $stmt = sqlsrv_query($conn, $sql, $params);
 
-// Kiểm tra kết quả
-if ($stmt === false) {
-    die(print_r(sqlsrv_errors(), true));
-}
-
-// Lấy dữ liệu từ truy vấn
-$songs = [];
+$playlists = [];
 while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-    $songs[] = $row;
+    $playlists[] = $row;
 }
 
-// Trả về kết quả dạng JSON
-echo json_encode($songs);
+echo json_encode($playlists);
 
-// Đóng kết nối
 sqlsrv_close($conn);
 ?>

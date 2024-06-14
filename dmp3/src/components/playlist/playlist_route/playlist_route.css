@@ -1,0 +1,44 @@
+#playlist_detail_page{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    width: 100%;
+}
+#playlist_item{
+    max-height: 80px;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 0 8px 8px 0;
+    color: #fff;
+    flex: 1;
+}
+#playlist_item:hover{
+    background-color: #372650;
+}
+
+#playlist_item img{
+    height: 70px;
+    width: 70px;
+    border-radius: 8px;
+}
+.playlist_item_content{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Chiếm toàn bộ chiều rộng của div "upload_item" */
+    height: 100%;
+}
+.playlist_item_content p{
+    flex: 1;
+    margin: 0;
+}
+#delete_btn{
+    cursor: pointer;
+    margin-right: 20px;
+}
+#song_list{
+    width: 100%;
+}

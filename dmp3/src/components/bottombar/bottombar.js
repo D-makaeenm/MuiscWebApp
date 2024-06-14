@@ -1,9 +1,11 @@
+// bottombar.js
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { SongContext } from '../songcontext/songcontext';
 import './bottombar.css';
+import { useNavigate } from 'react-router-dom';
 
 const BottomBar = () => {
-    const { currentSong } = useContext(SongContext);
+    const { currentSong, playNextSong } = useContext(SongContext);
     const audioRef = useRef(null);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -11,6 +13,8 @@ const BottomBar = () => {
     const [isMuted, setIsMuted] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isLooping, setIsLooping] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!currentSong) {
@@ -32,18 +36,24 @@ const BottomBar = () => {
             setCurrentTime(audioRef.current.currentTime);
         }
     };
-    
+
     useEffect(() => {
         if (audioRef.current) {
-            audioRef.current.addEventListener('timeupdate', () => {
-                setCurrentTime(audioRef.current.currentTime);
-            });
+            audioRef.current.addEventListener('timeupdate', handleTimeUpdate);
             audioRef.current.addEventListener('loadedmetadata', () => {
                 setDuration(audioRef.current.duration);
             });
+            audioRef.current.addEventListener('ended', playNextSong);
             audioRef.current.loop = isLooping;
         }
-    }, [isLooping]);
+        const currentAudioRef = audioRef.current;
+        return () => {
+            if (currentAudioRef) {
+                currentAudioRef.removeEventListener('timeupdate', handleTimeUpdate);
+                currentAudioRef.removeEventListener('ended', playNextSong);
+            }
+        };
+    }, [isLooping, playNextSong]);
 
     const formatTime = (time) => {
         if (!time) return '0:00';
@@ -116,10 +126,18 @@ const BottomBar = () => {
         }
     };
 
+    const handleMenuClick = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleAddToPlaylistClick = () => {
+        navigate('playlist/add_music');
+    };
+
     return (
         <div id="bottom_bar">
             <div id="song_infor">
-                {currentSong ? (
+            {currentSong ? (
                     <>
                         <img src={currentSong.ImagePath} alt="Thumbnail" className="item-image" />
                         <div className="item_content">
@@ -144,11 +162,12 @@ const BottomBar = () => {
                 )}
             </div>
             <div id="progess_song">
-                <div id="audio_btn">
+            <div id="audio_btn">
                     <div id="shuffle_btn"><i className="fa-solid fa-shuffle"></i></div>
                     <div id="prev_btn"><i className="fa-solid fa-backward"></i></div>
-                    <div id="play_btn" onClick={handlePlay}><i className={isPlaying ? "fa-solid fa-pause" : "fa-regular fa-circle-play"}></i></div>
-                    <div id="pause_btn" onClick={handlePause}><i className="fa-solid fa-square"></i></div>
+                    <div id="play_btn" onClick={isPlaying ? handlePause : handlePlay}>
+                        <i className={isPlaying ? "fa-solid fa-pause" : "fa-regular fa-circle-play"}></i>
+                    </div>
                     <div id="next_btn"><i className="fa-solid fa-forward"></i></div>
                     <div 
                         id="repeat_btn" 
@@ -194,9 +213,16 @@ const BottomBar = () => {
                     />
                     <span className="volumeValue">{isMuted ? 0 : volume}</span>
                 </div>
-                <div id="menu">
-                    <i className="fa-solid fa-bars"></i>
-                </div>
+                {currentSong && (
+                    <div id="menu">
+                        <i className="fa-solid fa-bars" onClick={handleMenuClick}></i>
+                        {isMenuOpen && (
+                            <div className="menu-dropdown">
+                                <button onClick={handleAddToPlaylistClick}>Thêm vào playlist</button>
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );

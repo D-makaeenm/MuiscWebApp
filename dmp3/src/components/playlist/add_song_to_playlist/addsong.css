@@ -1,0 +1,20 @@
+#add_song_to_playlist{
+    padding: 20px;
+    color: #fff;
+}
+#add_song_to_playlist button{
+    background-color: rgb(114, 44, 151);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    margin-top: 10px;
+    transition: ease 0.3s;
+}
+#add_song_to_playlist button:hover{
+    background-color: rgb(206, 182, 220);
+    color: black;
+}
