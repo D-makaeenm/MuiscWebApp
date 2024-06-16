@@ -11,9 +11,10 @@ import image4 from './slideshow/image/e0e5e9a36cf8d9d3c92957c339ce533b.jpg';
 import image5 from './slideshow/image/e4111d3568b3a9d9685c2136d22404da.jpg';
 
 const Homepage = () => {
-    const { setCurrentSong, playPlaylist } = useContext(SongContext);
+    const { setCurrentSong, playPlaylist, playChude } = useContext(SongContext);
     const [songs, setSongs] = useState([]);
     const [playlists, setPlaylists] = useState([]);
+    const [topics, setTopics] = useState([]);
     const images = [
         image1,
         image2,
@@ -32,6 +33,11 @@ const Homepage = () => {
             .then(response => response.json())
             .then(data => setPlaylists(data))
             .catch(error => console.error('Error fetching data:', error));
+
+        fetch('http://localhost/WebMusic/chucnang/gettop4chude.php')
+            .then(response => response.json())
+            .then(data => setTopics(data))
+            .catch(error => console.error('Error fetching data:', error));
     }, []);
 
     const handleSongClick = (song) => {
@@ -39,11 +45,17 @@ const Homepage = () => {
     };
 
     const handlePlaylistClick = (playlist) => {
-        // Call an API to get the songs in the playlist and then play it
         fetch(`http://localhost/WebMusic/chucnang/getsongplaylist_homepage.php?playlistId=${playlist.PlaylistID}`)
             .then(response => response.json())
             .then(songs => playPlaylist(songs))
             .catch(error => console.error('Error fetching songs in playlist:', error));
+    };
+
+    const handleTopicClick = (topic) => {
+        fetch(`http://localhost/WebMusic/chucnang/getsongchude_homepage.php?chudeId=${topic.ChuDeID}`)
+            .then(response => response.json())
+            .then(songs => playChude(songs))
+            .catch(error => console.error('Error fetching songs in topic:', error));
     };
 
     return (
@@ -89,7 +101,15 @@ const Homepage = () => {
                 <div>
                     <h1>Top 4 Chủ đề nổi bật</h1>
                     <div id="homepage_chude">
-                        {/* Add code here for "Top 4 Chủ đề nổi bật" */}
+                        {topics.map((topic, index) => (
+                            <div id="homepage_chude_item" key={index} onClick={() => handleTopicClick(topic)}>
+                                <img 
+                                    src={topic.Imagepath}
+                                    alt={topic.TenChuDe}
+                                />
+                                <p>{topic.TenChuDe}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

@@ -6,7 +6,6 @@ export const SongProvider = ({ children }) => {
     const [currentSong, setCurrentSong] = useState(null);
     const [currentPlaylist, setCurrentPlaylist] = useState([]);
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
-    const [playlistType, setPlaylistType] = useState('playlist'); // 'playlist' or 'chude'
 
     useEffect(() => {
         if (currentPlaylist.length > 0) {
@@ -28,10 +27,14 @@ export const SongProvider = ({ children }) => {
         }
     };
 
-    const playPlaylist = (playlist, type = 'playlist') => {
+    const playPlaylist = (playlist) => {
         setCurrentPlaylist(playlist);
         setCurrentSongIndex(0);
-        setPlaylistType(type);
+    };
+
+    const playChude = (chudeSongs) => {
+        setCurrentPlaylist(chudeSongs);
+        setCurrentSongIndex(0);
     };
 
     return (
@@ -45,8 +48,7 @@ export const SongProvider = ({ children }) => {
             playNextSong,
             playPrevSong,
             playPlaylist,
-            playlistType,
-            setPlaylistType
+            playChude
         }}>
             {children}
         </SongContext.Provider>
