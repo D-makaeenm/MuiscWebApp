@@ -1,0 +1,50 @@
+#feedback{
+    padding: 20px;
+    color: #fff;
+}
+#bentren select{
+    margin-left: 33px;
+}
+#benduoi{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+#benduoi textarea{
+    margin-left: 20px;
+}
+#feedback_submit{
+    margin-top: 20px;
+    border: none;
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4f1c4e;
+    cursor: pointer;
+    transition: ease 0.3s;
+    border-radius: 8px;
+}
+#feedback_submit:hover{
+    background-color: #6f326e;
+}
+
+#table_feedback {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    border: 1px solid #fff;
+}
+
+#table_feedback th {
+    border: 1px solid #fff;
+    background-color: rgba(0, 0, 0, 0);
+}
+#table_feedback td{
+    border: 1px solid #fff;
+}
+th, td {
+    padding: 0.5em;
+    text-align: left;
+}

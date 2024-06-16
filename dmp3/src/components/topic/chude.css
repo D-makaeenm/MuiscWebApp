@@ -154,3 +154,25 @@
     margin-bottom: 3px;
     text-align: center;
 }
+#topic_header_item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#topic_header_item p{
+    flex-grow: 8;
+    padding-left: 30px;
+    color: #fff;
+    text-decoration: none;
+}
+#topic_header_item div{
+    flex-grow: 1;
+}
+#delete_btn_topic_item{
+    cursor: pointer;
+    transition: ease 0.3s;
+}
+#delete_btn_topic_item:hover{
+    background-color: #f50000;
+}

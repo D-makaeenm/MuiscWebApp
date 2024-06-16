@@ -71,6 +71,27 @@ const Chude = () => {
         setCurrentSong(song);
     };
 
+    const handleTopicDeleteClick = (chudeId) => {
+        if (window.confirm('Bạn có chắc chắn muốn xóa chủ đề này không?')) {
+            fetch(`http://localhost/WebMusic/chucnang/delete_chude.php`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ chudeId: chudeId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success === '1') {
+                    setChudeItem(prevChudeItem => prevChudeItem.filter(chude => chude.ChuDeID !== chudeId));
+                } else {
+                    alert('Failed to delete chude: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error deleting chude:', error));
+        }
+    };
+
     return (
         <div id="chude_page">
             <div id="title_chude">
@@ -86,11 +107,19 @@ const Chude = () => {
                 <p>Tất cả các chủ đề</p>
                 <div id="all_chude">
                     {chudeItem.map(chude => (
-                        <div className="item_chude" key={chude.ChuDeID} onClick={() => handleViewChude(chude.ChuDeID)}>
-                            <p>{chude.TenChuDe}</p>
+                        <div className="item_chude" key={chude.ChuDeID}>
+                            <div id="topic_header_item">
+                                <p onClick={() => handleViewChude(chude.ChuDeID)}>{chude.TenChuDe}</p>
+                                {isAdmin && (
+                                    <div id="delete_btn_topic_item" onClick={() => handleTopicDeleteClick(chude.ChuDeID)}>
+                                        <i className="fa-solid fa-trash"></i>
+                                    </div>
+                                )}
+                            </div>
                             <img 
                                 src={chude.Imagepath} 
                                 alt={chude.TenChuDe} 
+                                onClick={() => handleViewChude(chude.ChuDeID)}
                             />
                         </div>
                     ))}

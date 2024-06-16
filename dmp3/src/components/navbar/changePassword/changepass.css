@@ -1,0 +1,27 @@
+#changepass {
+    padding: 20px;
+    color: #fff;
+}
+
+.form_group_changepass {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.form_group_changepass input{
+    margin-left: 10px;
+    height: 25px;
+}
+#form_change_pass button{
+    border: none;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #702480;
+    transition: ease 0.3s;
+}
+#form_change_pass button:hover{
+    background-color: #7f3e8c;
+}

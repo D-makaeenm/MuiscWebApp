@@ -17,6 +17,9 @@ import AddSongtoPlaylist from "./components/playlist/add_song_to_playlist/addson
 import Chude from "./components/topic/chude";
 import Addtopic from "./components/topic/add_topic/add_topic";
 import ChudeDetail from "./components/topic/chudeDetail/chudeDetail";
+import Feedback from "./components/feedback/feedback";
+import ChangePass from "./components/navbar/changePassword/changepass";
+import AddMusicToChude from "./components/topic/add_music_in_topic/add_music";
 import App from './App'
 import {
   createBrowserRouter,
@@ -76,6 +79,18 @@ const router = createBrowserRouter([
         path: "/home/topic/add_chude",
         element: <Addtopic />,
       },
+      {
+        path: "/home/feedback",
+        element: <Feedback />,
+      },
+      {
+        path: "/home/changePassword",
+        element: <ChangePass />,
+      },
+      {
+        path: "/home/addmusic/:chudeId",
+        element: <AddMusicToChude />,
+      }
     ],
   },
   {

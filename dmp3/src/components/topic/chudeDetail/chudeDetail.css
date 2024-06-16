@@ -45,3 +45,15 @@
     flex: 1;
     margin: 0;
 }
+#title_in_chude {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#title_in_chude div{
+    color: #fff;
+    margin-left: 10px;
+}
+#delete_btn_item_in_topic{
+    margin-right: 10px;
+}

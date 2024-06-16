@@ -62,4 +62,5 @@
 #show_username{
     margin-left: auto;
     color: #fff;
+    cursor: pointer;
 }
