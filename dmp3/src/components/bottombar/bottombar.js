@@ -115,7 +115,7 @@ const BottomBar = () => {
                     alert('Bài hát đã được thích');
                 } else {
                     console.log('Song liked successfully:', data);
-                    alert('Like thành công!');
+                    // alert('Like thành công!');
                 }
             } else {
                 console.error('Failed to like the song');
