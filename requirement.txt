@@ -1,0 +1,7 @@
+Yêu cầu cài đặt:
+Nodejs
+npm
+XAMPP
+PHP
+Driver PHP for SQL Server
+
